@@ -1,0 +1,106 @@
+[gd_scene load_steps=3 format=3 uid="uid://5jifqwv7ikf2"]
+
+[ext_resource type="Script" uid="uid://d4cfm8186jg1e" path="res://Scenes/canvas_input.gd" id="1_v7doh"]
+[ext_resource type="Texture2D" uid="uid://07sadu6ok4a" path="res://assets/Boulders/arrow.png" id="2_om4sa"]
+
+[node name="CanvasInput" type="CanvasLayer" groups=["hud"]]
+script = ExtResource("1_v7doh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 167.0
+offset_bottom = 33.0
+
+[node name="LabelGravity" type="Label" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "GRAVIDADE:"
+
+[node name="InputGravity" type="LineEdit" parent="HBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "9.8"
+alignment = 1
+max_length = 4
+flat = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="UpButton" type="Button" parent="HBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("2_om4sa")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="UpButtonTexture" type="TextureRect" parent="HBoxContainer/HBoxContainer2/UpButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 30)
+offset_left = 0.490524
+offset_top = 1.34596
+offset_right = 30.4905
+offset_bottom = 31.346
+texture = ExtResource("2_om4sa")
+
+[node name="DownButton" type="Button" parent="HBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("2_om4sa")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="DownButtonTexture" type="TextureRect" parent="HBoxContainer/HBoxContainer2/DownButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 30)
+offset_left = 0.327026
+offset_top = 1.01895
+offset_right = 30.327
+offset_bottom = 31.019
+texture = ExtResource("2_om4sa")
+flip_v = true
+
+[node name="RightButton" type="Button" parent="HBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+flat = true
+
+[node name="RightButtonTexture" type="TextureRect" parent="HBoxContainer/HBoxContainer2/RightButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 0.163513
+offset_top = 0.817543
+offset_right = 30.1635
+offset_bottom = 30.8175
+rotation = 1.5708
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("2_om4sa")
+
+[node name="LeftButton" type="Button" parent="HBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+flat = true
+
+[node name="LeftButtonTexture" type="TextureRect" parent="HBoxContainer/HBoxContainer2/LeftButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 0.36853
+offset_top = 1.22846
+offset_right = 30.3685
+offset_bottom = 31.2285
+rotation = -1.5708
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("2_om4sa")
+
+[connection signal="text_submitted" from="HBoxContainer/InputGravity" to="." method="_on_input_gravity_text_submitted"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer2/UpButton" to="." method="_on_up_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer2/DownButton" to="." method="_on_down_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer2/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer2/LeftButton" to="." method="_on_left_button_pressed"]

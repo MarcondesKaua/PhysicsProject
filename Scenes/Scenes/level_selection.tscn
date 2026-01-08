@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://b10ns85pc8csg"]
+
+[ext_resource type="Texture2D" uid="uid://5blvrqmkdec5" path="res://assets/Menu/Sprite-0004-2.png" id="1_1m0xv"]
+[ext_resource type="Script" uid="uid://fk22rj746bll" path="res://Scripts/level_selection.gd" id="1_bhq3g"]
+[ext_resource type="Texture2D" uid="uid://bvxum4ogrmhbv" path="res://assets/Target/vecteezy_pixel-art-target-icon-game-asset-design_59541559-removebg-preview-ezgif.com-optipng.png" id="3_6dews"]
+[ext_resource type="Texture2D" uid="uid://bcwfv21oujwxq" path="res://assets/Boulders/boulder.png" id="4_0ac8u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tsd2a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_au0oc"]
+texture = ExtResource("1_1m0xv")
+region_rect = Rect2(548, 262, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fg0ae"]
+texture = ExtResource("1_1m0xv")
+region_rect = Rect2(550, 432, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rv05k"]
+texture = ExtResource("1_1m0xv")
+region_rect = Rect2(550, 92, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ntl0a"]
+texture = ExtResource("3_6dews")
+region_rect = Rect2(128, 128, 248, 248)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjbgg"]
+texture = ExtResource("4_0ac8u")
+region_rect = Rect2(-1, -1, 18, 18)
+
+[node name="LevelSelection" type="CanvasLayer"]
+script = ExtResource("1_bhq3g")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -152.144
+offset_top = 53.5897
+offset_right = 147.856
+offset_bottom = 190.59
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "Levels"
+horizontal_alignment = 1
+
+[node name="Level_1_Button" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 230.0
+offset_top = -248.0
+offset_right = 360.0
+offset_bottom = -121.0
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.588235)
+theme_override_colors/font_color = Color(1, 1, 1, 0.784314)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rv05k")
+text = "1
+"
+icon_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -315.912
+offset_top = 305.988
+offset_right = -243.912
+offset_bottom = 382.988
+
+[node name="Level_1_Button2" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 563.0
+offset_top = -246.0
+offset_right = 678.0
+offset_bottom = -130.0
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "1
+"
+icon_alignment = 1
+
+[node name="Level_1_Button3" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 400.058
+offset_top = -251.121
+offset_right = 474.058
+offset_bottom = -182.121
+grow_vertical = 2
+scale = Vector2(1.74679, 1.85029)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kjbgg")
+text = "1
+"
+icon_alignment = 1
+
+[connection signal="pressed" from="Level_1_Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="Level_1_Button2" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="Level_1_Button3" to="." method="_on_level_1_button_pressed"]

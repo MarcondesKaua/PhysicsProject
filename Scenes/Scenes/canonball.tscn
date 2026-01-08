@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://v43pdfjhfbde"]
+
+[ext_resource type="Script" uid="uid://bnhk3nbkuux8m" path="res://Scripts/player.gd" id="1_xqfuk"]
+[ext_resource type="Texture2D" uid="uid://bcwfv21oujwxq" path="res://assets/Boulders/boulder.png" id="2_ysgr7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
+radius = 0.500297
+
+[node name="CanonBall" type="RigidBody2D"]
+collision_mask = 2
+script = ExtResource("1_xqfuk")
+
+[node name="SpriteCanonBall" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_ysgr7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+shape = SubResource("CircleShape2D_onrkg")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

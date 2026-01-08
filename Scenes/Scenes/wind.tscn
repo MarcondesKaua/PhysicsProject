@@ -1,0 +1,177 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7yrbs64eaq0l"]
+
+[ext_resource type="Script" uid="uid://33l2q4kmaupk" path="res://Scripts/wind.gd" id="1_gc4i6"]
+[ext_resource type="Texture2D" uid="uid://07sadu6ok4a" path="res://assets/Boulders/arrow.png" id="2_43i0t"]
+
+[sub_resource type="Gradient" id="Gradient_iwlsb"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p3bod"]
+gradient = SubResource("Gradient_iwlsb")
+width = 1
+height = 32
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
+metadata/_snap_count = 2
+
+[sub_resource type="Curve" id="Curve_jsuhd"]
+
+[sub_resource type="Curve" id="Curve_j8s6f"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -0.00346923), 0.0, 0.0, 0, 0, Vector2(0.233333, 1), 0.0, 0.0, 0, 0, Vector2(0.508333, -1), 0.0, 0.0, 0, 0, Vector2(0.733333, 1), 0.0, 0.0, 0, 0, Vector2(0.991667, -0.0786517), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_savvv"]
+curve_x = SubResource("Curve_jsuhd")
+curve_y = SubResource("Curve_j8s6f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bej4f"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(30, 30, 0)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+directional_velocity_min = 0.499984
+directional_velocity_max = 1.49998
+directional_velocity_curve = SubResource("CurveXYZTexture_savvv")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.04
+scale_max = 0.04
+color = Color(1, 1, 1, 0.243137)
+
+[node name="Wind" type="Node2D" groups=["wind"]]
+script = ExtResource("1_gc4i6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = -0.124283
+offset_top = 42.7771
+offset_right = 368.876
+offset_bottom = 101.777
+
+[node name="HBoxStatus" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WindLabel" type="Label" parent="CanvasLayer/VBoxContainer/HBoxStatus"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "VENTO:"
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer/VBoxContainer/HBoxStatus"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxForce" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WindForceLabel" type="Label" parent="CanvasLayer/VBoxContainer/HBoxForce"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "FORÇA DO VENTO:"
+
+[node name="InputWindForce" type="LineEdit" parent="CanvasLayer/VBoxContainer/HBoxForce"]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "0"
+alignment = 1
+max_length = 4
+flat = true
+
+[node name="HBoxDirections" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxForce"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="UpButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("2_43i0t")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="UpButtonTexture" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/UpButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 0.490524
+offset_top = 1.34596
+offset_right = 30.4905
+offset_bottom = 31.346
+texture = ExtResource("2_43i0t")
+
+[node name="DownButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("2_43i0t")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="DownButtonTexture" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/DownButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 0.327026
+offset_top = 1.01895
+offset_right = 30.327
+offset_bottom = 31.019
+texture = ExtResource("2_43i0t")
+flip_v = true
+
+[node name="RightButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+flat = true
+
+[node name="RightButtonTexture" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/RightButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 0.163513
+offset_top = 0.817543
+offset_right = 30.1635
+offset_bottom = 30.8175
+rotation = 1.5708
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("2_43i0t")
+
+[node name="LeftButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+flat = true
+
+[node name="LeftButtonTexture" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/LeftButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 0.36853
+offset_top = 1.22846
+offset_right = 30.3685
+offset_bottom = 31.2285
+rotation = -1.5708
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("2_43i0t")
+
+[node name="WindParticles" type="GPUParticles2D" parent="."]
+amount = 100
+texture = SubResource("GradientTexture2D_p3bod")
+lifetime = 5.0
+preprocess = 2.0
+speed_scale = 0.8
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+process_material = SubResource("ParticleProcessMaterial_bej4f")
+
+[connection signal="text_changed" from="CanvasLayer/VBoxContainer/HBoxForce/InputWindForce" to="." method="_on_input_wind_force_text_changed"]
+[connection signal="text_submitted" from="CanvasLayer/VBoxContainer/HBoxForce/InputWindForce" to="." method="_on_input_wind_force_text_submitted"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/UpButton" to="." method="_on_up_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/DownButton" to="." method="_on_down_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/LeftButton" to="." method="_on_left_button_pressed"]

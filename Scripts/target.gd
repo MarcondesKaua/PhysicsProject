@@ -2,7 +2,7 @@ extends Node2D
 class_name Target
 
 @onready var dectectionArea: Area2D = $TargetArea
-@export var distanceDirection: bool = false
+@export var distanceDirection: bool = true
 
 var currentLocation: Vector2
 var distance: float = 5.0
@@ -16,7 +16,7 @@ var minSpeedScale: float = 1.0
 var maxSpeedScale: float = 2.5
 
 func _ready() -> void:
-	seed(Time.get_ticks_usec())
+	add_to_group("target")
 	self.currentLocation = global_position
 	randomize_movement_speed()
 	self.dectectionArea.body_entered.connect(targetHitted)

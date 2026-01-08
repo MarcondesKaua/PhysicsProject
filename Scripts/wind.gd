@@ -3,61 +3,92 @@ class_name Wind
 
 signal windChanged(newWind: float)
 
-@onready var inputWind = $CanvasLayer/InputWindForce
-@onready var checkButton: CheckButton = $CanvasLayer/CheckButton
+@onready var inputWind: LineEdit = %InputWindForce
+@onready var checkButton: CheckButton = %CheckButton
 @onready var windParticles: GPUParticles2D = $WindParticles
+@onready var windParticlesMaterial: ParticleProcessMaterial = $WindParticles.process_material
+@onready var windConteiner: HBoxContainer = $CanvasLayer/VBoxContainer/HBoxForce
 
 var windForce: float = 5
 var windDirection: Vector2 = Vector2.RIGHT
 
 
 func _ready() -> void:
-	self.inputWind.text = str(0)
+	add_to_group("wind")
+	self.inputWind.text = str(windForce)
 	self.checkButton.button_pressed = false
 	self.windParticles.visible = false
-	self.inputWind.text = str(windForce)
+	self.windConteiner.visible = false
+	
+
 
 func _process(delta: float) -> void:
 	var windActive = self.checkButton.button_pressed
 	self.windParticles.emitting = windActive
 	self.windParticles.visible = windActive
 	self.inputWind.visible = windActive
-
-
-func _input(direction: InputEvent) -> void:
-	if direction.is_action_pressed("ui_up"):
-		self.windDirection = Vector2.UP
-		#self.windParticles.
-	elif direction.is_action_pressed("ui_down"):
-		self.windDirection = Vector2.DOWN
-	elif direction.is_action_pressed("ui_right"):
-		self.windDirection = Vector2.RIGHT
-	elif direction.is_action_pressed("ui_left"):
-		self.windDirection = Vector2.LEFT
-	else:
-		return
-	changeParticles()
-
-func changeParticles() -> void:
-	if windParticles.process_material is ParticleProcessMaterial:
-		var mat = windParticles.process_material as ParticleProcessMaterial
-		# Ajusta a direção no material (X, Y, Z)
-		mat.direction = Vector3(windDirection.x, windDirection.y, 0)
+	self.windConteiner.visible = windActive
 
 
 func _on_input_wind_force_text_submitted(newText: String) -> void:
-	var cleanInput = newText.replace("," , ".")
-	var cleanFloatInput = cleanInput.to_float()
+	var cleanFloatInput = newText.to_float()
 	
-	if cleanFloatInput >= 0:
+	if cleanFloatInput > 0:
 		self.windForce = cleanFloatInput
 		windChanged.emit(self.windForce)
 		print("Novo vento", self.windForce)
+	elif cleanFloatInput == 0:
+		self.checkButton.button_pressed = false
 	else:
-		printerr("Erro fatal")
+		print("Erro fatal")
+
+
+
+func clean_numeric_input(newLine: LineEdit) -> void:
+	var textFiltred = ""
+	var dotCount = 0
+	var cursorPosition = newLine.caret_column
 	
+	for i in newLine.text:
+		if i in "0123456789":
+			textFiltred += i
+		elif (i == "," or i== "." and dotCount == 0):
+			textFiltred += "."
+			dotCount += 1
+	newLine.text = textFiltred
+	newLine.caret_column = min (cursorPosition, textFiltred.length())
+
+func _on_input_wind_force_text_changed(new_text: String) -> void:
+	clean_numeric_input(self.inputWind)
+
+func setWindDirection(windDirection: Vector2) -> void:
+	self.windDirection = windDirection.normalized()
+	
+
 func getWindVector() -> Vector2:
 	if !checkButton.button_pressed:
+		
 		return Vector2.ZERO
 	
+	
 	return windDirection * windForce
+
+
+func _on_up_button_pressed() -> void:
+	setWindDirection(Vector2.UP)
+	self.windParticlesMaterial.gravity = Vector3(0,-10,0)
+
+
+func _on_down_button_pressed() -> void:
+	setWindDirection(Vector2.DOWN)
+	self.windParticlesMaterial.gravity = Vector3(0,10,0)
+
+	
+func _on_right_button_pressed() -> void:
+	setWindDirection(Vector2.RIGHT)
+	self.windParticlesMaterial.gravity = Vector3(10,0,0)
+
+
+func _on_left_button_pressed() -> void:
+	setWindDirection(Vector2.LEFT)
+	self.windParticlesMaterial.gravity = Vector3(-10,0,0)

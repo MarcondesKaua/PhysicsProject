@@ -74,15 +74,12 @@ func setup() -> void:
 	var localWind = self.windScene.instantiate()
 	var localCanon = self.canonScene.instantiate()
 	
-	# 2. Adicionar ao Mundo
 	self.world.add_child(localCanvasInput)
 	self.world.add_child(localWind)
 	
-	# 3. LOCALIZAR A CÂMERA (Essencial!)
-	# Como o world agora é o seu nível, a câmera deve estar dentro dele.
+	#CÓDIGO INUTIL:
 	self.camera = self.world.get_node_or_null("Camera2D")
 	
-	# 4. Configurar Câmera com segurança
 	if self.camera != null:
 		if self.camera.has_method("targetPlayer"):
 			self.camera.targetPlayer(localCanon)
@@ -90,7 +87,8 @@ func setup() -> void:
 	else:
 		print("AVISO: Câmera não encontrada no mundo. A UI pode não aparecer corretamente.")
 		
-		
+	#Até aqui, por que nao vai ? sla, mas ta inutil e funcional
+	
 func launchPlayer(startPosition: Vector2, launchImpulse: Vector2) -> void: 
 	self.player = self.canonBall_scene.instantiate()
 	self.player.global_position = startPosition

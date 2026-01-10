@@ -1,11 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7yrbs64eaq0l"]
+[gd_scene load_steps=9 format=3 uid="uid://b7yrbs64eaq0l"]
 
 [ext_resource type="Script" uid="uid://33l2q4kmaupk" path="res://Scripts/wind.gd" id="1_gc4i6"]
-[ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="2_4dp6s"]
 [ext_resource type="Texture2D" uid="uid://07sadu6ok4a" path="res://assets/Boulders/arrow.png" id="2_43i0t"]
-
-[sub_resource type="Theme" id="Theme_btdmq"]
-default_font = ExtResource("2_4dp6s")
 
 [sub_resource type="Gradient" id="Gradient_iwlsb"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -55,7 +51,6 @@ offset_left = -0.124283
 offset_top = 42.7771
 offset_right = 368.876
 offset_bottom = 101.777
-theme = SubResource("Theme_btdmq")
 
 [node name="HBoxStatus" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2

@@ -1,0 +1,517 @@
+[gd_scene load_steps=15 format=3 uid="uid://b10ns85pc8csg"]
+
+[ext_resource type="Script" uid="uid://fk22rj746bll" path="res://Scripts/level_selection.gd" id="1_bhq3g"]
+[ext_resource type="Texture2D" uid="uid://d2x25o13jvpyx" path="res://assets/Menu/bgLevelsimple.png" id="2_0ac8u"]
+[ext_resource type="Texture2D" uid="uid://ca6ol3uaeqlhy" path="res://assets/Menu/levelButtons2.png" id="3_ntl0a"]
+[ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="4_6dews"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ac8u"]
+
+[sub_resource type="Theme" id="Theme_6dews"]
+default_font = ExtResource("4_6dews")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tsd2a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_au0oc"]
+texture = ExtResource("3_ntl0a")
+region_rect = Rect2(1, 33, 14, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fg0ae"]
+texture = ExtResource("3_ntl0a")
+region_rect = Rect2(1, 49, 14, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ntl0a"]
+texture = ExtResource("3_ntl0a")
+region_rect = Rect2(1, 17, 14, 14)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6dews"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ac8u"]
+texture = ExtResource("3_ntl0a")
+region_rect = Rect2(49, 58, 7, 5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjbgg"]
+texture = ExtResource("3_ntl0a")
+region_rect = Rect2(55, 54, 7, 5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6dews"]
+texture = ExtResource("3_ntl0a")
+region_rect = Rect2(50, 49, 7, 5)
+
+[node name="LevelSelection" type="CanvasLayer"]
+script = ExtResource("1_bhq3g")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0ac8u")
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="TextureRect/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0ac8u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TextureRect/CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6dews")
+theme_override_font_sizes/font_size = 100
+text = "Levels"
+
+[node name="GridContainer" type="GridContainer" parent="TextureRect/CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = SubResource("Theme_6dews")
+theme_override_constants/h_separation = 200
+theme_override_constants/v_separation = 30
+columns = 5
+
+[node name="Level_1_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0295066, 0.0295066, 0.0295066, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = " 1 "
+
+[node name="Level_2_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "2
+"
+
+[node name="Level_3_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "3
+"
+
+[node name="Level_4_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "4"
+
+[node name="Level_5_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "5 
+"
+
+[node name="Level_6_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "6
+"
+
+[node name="Level_7_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "7
+"
+
+[node name="Level_8_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "8"
+
+[node name="Level_9_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "9
+"
+
+[node name="Level_10_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "10"
+
+[node name="Level_11_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "11
+"
+
+[node name="Level_12_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "12
+"
+
+[node name="Level_13_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "13
+"
+
+[node name="Level_14_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "14
+"
+
+[node name="Level_15_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "15
+"
+
+[node name="Level_16_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "16
+"
+
+[node name="Level_17_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "17"
+
+[node name="Level_18_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "18
+"
+
+[node name="Level_19_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "19
+"
+
+[node name="Level_20_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "20
+"
+
+[node name="Level_21_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "21"
+
+[node name="Level_22_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "22
+"
+
+[node name="Level_23_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "23
+"
+
+[node name="Level_24_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "24
+"
+
+[node name="Level_25_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "25
+"
+
+[node name="Level_26_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "26
+"
+
+[node name="Level_27_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "27
+"
+
+[node name="Level_28_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "28
+"
+
+[node name="Level_29_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "29
+"
+
+[node name="Level_30_Button" type="Button" parent="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(98, 96)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tsd2a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_au0oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntl0a")
+text = "30
+"
+
+[node name="Back_to_menu_button" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 32.189
+offset_top = 36.3876
+offset_right = 111.189
+offset_bottom = 107.388
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6dews")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0ac8u")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kjbgg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6dews")
+
+[connection signal="pressed" from="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer/Level_1_Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="TextureRect/Back_to_menu_button" to="." method="_on_back_to_menu_button_pressed"]

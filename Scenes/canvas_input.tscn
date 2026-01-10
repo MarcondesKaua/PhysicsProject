@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://5jifqwv7ikf2"]
+[gd_scene load_steps=5 format=3 uid="uid://5jifqwv7ikf2"]
 
-[ext_resource type="Script" uid="uid://d4cfm8186jg1e" path="res://Scenes/canvas_input.gd" id="1_v7doh"]
+[ext_resource type="Script" uid="uid://d4cfm8186jg1e" path="res://Scripts/canvas_input.gd" id="1_v7doh"]
+[ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="2_4g3dx"]
 [ext_resource type="Texture2D" uid="uid://07sadu6ok4a" path="res://assets/Boulders/arrow.png" id="2_om4sa"]
+
+[sub_resource type="Theme" id="Theme_1065b"]
+default_font = ExtResource("2_4g3dx")
 
 [node name="CanvasInput" type="CanvasLayer" groups=["hud"]]
 script = ExtResource("1_v7doh")
@@ -9,6 +13,7 @@ script = ExtResource("1_v7doh")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_right = 167.0
 offset_bottom = 33.0
+theme = SubResource("Theme_1065b")
 
 [node name="LabelGravity" type="Label" parent="HBoxContainer"]
 texture_filter = 1
@@ -41,6 +46,7 @@ expand_icon = true
 [node name="UpButtonTexture" type="TextureRect" parent="HBoxContainer/HBoxContainer2/UpButton"]
 texture_filter = 1
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
 offset_left = 0.490524
 offset_top = 1.34596
 offset_right = 30.4905
@@ -58,6 +64,7 @@ expand_icon = true
 [node name="DownButtonTexture" type="TextureRect" parent="HBoxContainer/HBoxContainer2/DownButton"]
 texture_filter = 1
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
 offset_left = 0.327026
 offset_top = 1.01895
 offset_right = 30.327
@@ -99,6 +106,7 @@ rotation = -1.5708
 pivot_offset = Vector2(15, 15)
 texture = ExtResource("2_om4sa")
 
+[connection signal="text_changed" from="HBoxContainer/InputGravity" to="." method="_on_input_gravity_text_changed"]
 [connection signal="text_submitted" from="HBoxContainer/InputGravity" to="." method="_on_input_gravity_text_submitted"]
 [connection signal="pressed" from="HBoxContainer/HBoxContainer2/UpButton" to="." method="_on_up_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/HBoxContainer2/DownButton" to="." method="_on_down_button_pressed"]

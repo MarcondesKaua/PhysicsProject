@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm1g6v6wb85fc"]
+[gd_scene load_steps=2 format=3 uid="uid://dm1g6v6wb85fc"]
 
-[ext_resource type="PackedScene" uid="uid://brng1v2av12w5" path="res://Scenes/world.tscn" id="2_3ege8"]
 [ext_resource type="Script" uid="uid://djvxgsvpfkmys" path="res://Scripts/camera_2d.gd" id="3_lgjpj"]
 
 [node name="WorldView" type="Node2D"]
@@ -24,5 +23,3 @@ limit_top = -100000000
 limit_right = 100000000
 limit_bottom = 100000000
 script = ExtResource("3_lgjpj")
-
-[node name="Map" parent="SubViewportContainer/SubViewport/World" instance=ExtResource("2_3ege8")]

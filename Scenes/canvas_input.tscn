@@ -8,11 +8,16 @@
 default_font = ExtResource("2_4g3dx")
 
 [node name="CanvasInput" type="CanvasLayer" groups=["hud"]]
+layer = 2
 script = ExtResource("1_v7doh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 167.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -309.0
 offset_bottom = 33.0
+grow_horizontal = 0
 theme = SubResource("Theme_1065b")
 
 [node name="LabelGravity" type="Label" parent="HBoxContainer"]

@@ -6,7 +6,7 @@ extends Node2D
 @export var launchForce : float = 2.5
 
 const MAXFORCE: float = 15.0
-const CHARGERATE: float = 15.0
+const CHARGERATE: float = 25.0
 var currentCharge: float = 0.0
 var isCharging: bool = false
 

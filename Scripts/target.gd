@@ -32,9 +32,13 @@ func _process(delta: float) -> void:
 	
 	
 func targetHitted (body: Node2D) -> void: 
-	if body is canonBall:
-		body.queue_free()
-		respawn()
+	self.visible = false
+	await get_tree().create_timer(0.3).timeout
+	
+	GameManager._go_to_level_selection()
+	#if body is canonBall:
+		#body.queue_free()
+		#respawn()
 
 func respawn() -> void:
 	var newX = randf_range(self.minX, self.maxX)

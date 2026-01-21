@@ -17,30 +17,36 @@ var camera: Camera2D = null
 var wind: Node2D = null
 
 func _ready() -> void:
-	_go_to_menu()
-
-func _go_to_menu()-> void:
 	get_tree().change_scene_to_packed(self.menu_scene)
 
+func _go_to_menu()-> void:
+	SceneTransition.change_scene(self.menu_scene)
+	#get_tree().change_scene_to_packed(self.menu_scene)
+
 func _go_to_level_selection() -> void:
-	get_tree().change_scene_to_packed(self.level_selection_scene)
+	SceneTransition.change_scene(self.level_selection_scene)
+	#get_tree().change_scene_to_packed(self.level_selection_scene)
 
 
-func loading_levels() -> void:
-	var error_scene_test = get_tree().change_scene_to_packed(self.world_viewscene)
+func loading_levels(level_loading: PackedScene) -> void:
 	
-	if error_scene_test:
-		print ("Erro fatal de nao achar nada")
-		return
-		
+	await SceneTransition.change_scene(self.world_viewscene)
+	
 	await get_tree().process_frame
 	
-	if self.world:
+	var world_in_viewscene = get_tree().root.get_node("WorldView/SubViewportContainer/SubViewport/World")
+	
+	if world_in_viewscene:
+		var level_loading_instance = level_loading.instantiate()
+		world_in_viewscene.add_child(level_loading_instance)
+		self.world = world_in_viewscene
 		setup()
 	else:
 		print("Erro fatal de cena")
 		
 		
+		
+
 #func setup() -> void:
 
 	#var world_view: Node2D = self.world_viewscene.instantiate()
@@ -61,15 +67,15 @@ func loading_levels() -> void:
 	#self.camera.targetPlayer(canon)
 	#
 
+#func world_setup(world_ref: Node2D) -> void:
+	#self.world = world_ref
+	#setup()
 
-func world_setup(world_ref: Node2D) -> void:
-	self.world = world_ref
-	setup()
 
 func setup() -> void:
 	print("Iniciando setup dos elementos...")
 	
-	# 1. Instanciar
+	
 	var localCanvasInput = self.canvasInput.instantiate()
 	var localWind = self.windScene.instantiate()
 	var localCanon = self.canonScene.instantiate()
@@ -77,16 +83,20 @@ func setup() -> void:
 	self.world.add_child(localCanvasInput)
 	self.world.add_child(localWind)
 	
-	#CÓDIGO INUTIL:
-	self.camera = self.world.get_node_or_null("Camera2D")
 	
-	if self.camera != null:
-		if self.camera.has_method("targetPlayer"):
-			self.camera.targetPlayer(localCanon)
-			print("Câmera focada no canhão.")
-	else:
-		print("AVISO: Câmera não encontrada no mundo. A UI pode não aparecer corretamente.")
-		
+	
+	#Aqui começa a bagunça
+	
+	#CÓDIGO INUTIL:
+	#self.camera = self.world.get_node_or_null("Camera2D")
+	#
+	#if self.camera != null:
+		#if self.camera.has_method("targetPlayer"):
+			#self.camera.targetPlayer(localCanon)
+			#print("Câmera focada no canhão.")
+	#else:
+		#print("AVISO: Câmera não encontrada no mundo. A UI pode não aparecer corretamente.")
+		#
 	#Até aqui, por que nao vai ? sla, mas ta inutil e funcional
 	
 func launchPlayer(startPosition: Vector2, launchImpulse: Vector2) -> void: 
@@ -94,7 +104,7 @@ func launchPlayer(startPosition: Vector2, launchImpulse: Vector2) -> void:
 	self.player.global_position = startPosition
 	self.world.add_child(self.player)
 	#if not self.camera == null: 
-		#self.camera.targetPlayer(self.player) #Focusing in canonBall
+		#self.camera.targetPlayer(self.player) #Foca na bola de canhão 
 	self.player.apply_central_impulse(launchImpulse)
 	
 	

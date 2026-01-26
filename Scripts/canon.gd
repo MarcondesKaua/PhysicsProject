@@ -43,6 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func launch() -> void:
 	var finalLaunchForce = self.currentCharge
-	var launchDirection = Vector2(1, 0).rotated(self.animatedSprite.rotation) 
+	var launchDirection = Vector2.from_angle(self.animatedSprite.global_rotation)
+	#Vector2(1, 0).rotated(self.animatedSprite.rotation) 
 	GameManager.launchPlayer(shootingPoint.global_position, launchDirection * finalLaunchForce)
 	self.currentCharge = launchForce

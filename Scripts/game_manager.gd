@@ -16,8 +16,8 @@ var root: Node2D = null
 var camera: Camera2D = null
 var wind: Node2D = null
 
-func _ready() -> void:
-	get_tree().change_scene_to_packed(self.menu_scene)
+#func _ready() -> void:
+	#get_tree().change_scene_to_packed(self.menu_scene)
 
 func _go_to_menu()-> void:
 	SceneTransition.change_scene(self.menu_scene)

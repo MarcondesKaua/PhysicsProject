@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bc8e5umep8nlc"]
 
-[ext_resource type="AudioStream" uid="uid://dv65kuwpgpukl" path="res://SoundEffects/BgSoundTrack/BgMusicaSoundTrack.mp3" id="1_4m5bw"]
+[ext_resource type="AudioStream" uid="uid://orgrx5gtawde" path="res://SoundEffects/SunnyLand Music/Adventure pack 1 ogg/hurry_up_and_run.ogg" id="1_pu4hd"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_4m5bw")
-volume_db = 15.0
+stream = ExtResource("1_pu4hd")
+volume_db = 2.0
 autoplay = true

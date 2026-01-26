@@ -545,4 +545,5 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_6dews")
 
 [connection signal="pressed" from="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer/Level_1_Button" to="." method="_on_level_1_button_pressed"]
 [connection signal="pressed" from="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer/Level_2_Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="TextureRect/CenterContainer/Panel/VBoxContainer/GridContainer/Level_3_Button" to="." method="_on_level_3_button_pressed"]
 [connection signal="pressed" from="TextureRect/Back_to_menu_button" to="." method="_on_back_to_menu_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5jifqwv7ikf2"]
+[gd_scene load_steps=14 format=3 uid="uid://5jifqwv7ikf2"]
 
 [ext_resource type="Script" uid="uid://d4cfm8186jg1e" path="res://Scripts/canvas_input.gd" id="1_v7doh"]
 [ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="2_4g3dx"]
@@ -24,8 +24,6 @@ texture = ExtResource("4_ia3cq")
 
 [sub_resource type="Theme" id="Theme_sa17s"]
 default_font = ExtResource("2_4g3dx")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vsv4e"]
 
 [node name="CanvasInput" type="CanvasLayer" groups=["hud"]]
 layer = 2
@@ -141,7 +139,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ia3cq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_vsv4e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_3a1wi")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rylup")
-toggle_mode = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 1191.0
@@ -161,7 +158,6 @@ text = "DIREÇÃO:"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GravityMenu" type="TextureRect" parent="CanvasLayer"]
-texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -173,22 +169,14 @@ offset_right = 360.0
 offset_bottom = 361.5
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 texture = ExtResource("4_ia3cq")
 
 [node name="ClickChecker" type="Button" parent="CanvasLayer/GravityMenu"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_vsv4e")
-flat = true
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
 
-[node name="WindRose" type="TextureRect" parent="CanvasLayer/GravityMenu"]
-layout_mode = 1
+[node name="WindRose" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -200,10 +188,9 @@ offset_right = 309.0
 offset_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 texture = ExtResource("5_vsv4e")
 
-[node name="WindPointer" type="Sprite2D" parent="CanvasLayer/GravityMenu/WindRose"]
+[node name="WindPointer" type="Sprite2D" parent="CanvasLayer/WindRose"]
 position = Vector2(309.304, 318.909)
 scale = Vector2(7.743, 9.864)
 texture = ExtResource("6_3a1wi")

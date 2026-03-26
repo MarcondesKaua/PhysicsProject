@@ -5,7 +5,9 @@ const DRAGCOEFICIENT: float = 0.5
 const DRAGDENCITY: float = 0.1
 var canonBallArea: float = 1.0
 
-
+func _ready() -> void:
+	self.mass = 100.0
+	canonBallArea = sqrt(self.mass)
 func _physics_process(delta: float) -> void:
 	var hud = get_tree().get_nodes_in_group("hud")
 	for hudIndx in hud:
@@ -28,7 +30,8 @@ func _physics_process(delta: float) -> void:
 	var dragDirection = -rawSpeed.normalized()
 	
 	var dragForce = ((applicableSpeed * applicableSpeed) * DRAGCOEFICIENT * DRAGDENCITY * canonBallArea) * 0.5
-	self.apply_central_force(dragForce * dragDirection)
+	#isso aqui ta fazendo um fenomeno legal self.apply_central_force(dragForce * dragDirection)
+	self.apply_central_force((dragForce) * dragDirection)
 	
 
 

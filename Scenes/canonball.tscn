@@ -7,7 +7,7 @@
 radius = 0.500297
 
 [node name="CanonBall" type="RigidBody2D"]
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_xqfuk")
 
 [node name="SpriteCanonBall" type="Sprite2D" parent="."]

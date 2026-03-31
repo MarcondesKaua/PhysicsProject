@@ -89,6 +89,7 @@ texture = ExtResource("2_4ppwu")
 6:3/0 = 0
 7:3/0 = 0
 8:3/0 = 0
+8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:3/0 = 0
 10:3/0 = 0
 11:3/0 = 0
@@ -202,6 +203,7 @@ texture = ExtResource("2_4ppwu")
 23:7/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_wx14w"]
+physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_6c7x5")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcngy"]
@@ -213,7 +215,6 @@ texture = ExtResource("2_4ppwu")
 4:0/0 = 0
 5:0/0 = 0
 6:0/0 = 0
-6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -2.33816, 4.13675, 4.49647, -0.539576, -1.07915, -4.67633, 4.67633, -8, -0.899294)
 7:0/0 = 0
 8:0/0 = 0
 9:0/0 = 0
@@ -238,7 +239,6 @@ texture = ExtResource("2_4ppwu")
 4:1/0 = 0
 5:1/0 = 0
 6:1/0 = 0
-6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.93534, -5.03604, 8, -8, 8, 8, -5.39576, 3.95689, 1.61873, -1.61873)
 7:1/0 = 0
 8:1/0 = 0
 9:1/0 = 0
@@ -263,7 +263,6 @@ texture = ExtResource("2_4ppwu")
 4:2/0 = 0
 5:2/0 = 0
 6:2/0 = 0
-6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 5.2159, -3.77703, -1.79859, 0.719435, 5.2159, 4.67633, -8, 8)
 7:2/0 = 0
 8:2/0 = 0
 9:2/0 = 0
@@ -288,7 +287,6 @@ texture = ExtResource("2_4ppwu")
 4:3/0 = 0
 5:3/0 = 0
 6:3/0 = 0
-6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.95689, -5.57562, 0.719435, 1.79859, 5.03605, -5.03604, 8, 8, -8, 8)
 7:3/0 = 0
 8:3/0 = 0
 9:3/0 = 0
@@ -411,8 +409,7 @@ texture = ExtResource("2_4ppwu")
 23:7/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_4ppwu"]
-physics_layer_0/collision_layer = 0
-physics_layer_0/collision_mask = 0
+physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_bcngy")
 
 [node name="World_3" type="Node2D"]
@@ -426,6 +423,7 @@ offset_bottom = 844.0
 scale = Vector2(0.025, 0.025)
 texture = ExtResource("1_bcngy")
 stretch_mode = 6
+metadata/_edit_use_anchors_ = true
 
 [node name="Background_2" type="TextureRect" parent="."]
 texture_repeat = 2
@@ -437,11 +435,21 @@ scale = Vector2(0.025, 0.025)
 texture = ExtResource("1_bcngy")
 stretch_mode = 6
 flip_h = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Terrain" type="TileMapLayer" parent="."]
+light_mask = 2
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 tile_map_data = PackedByteArray("AAAMAAIAAAAAAAMAAAANAAIAAAABAAMAAAAOAAIAAAACAAMAAAA=")
+tile_set = SubResource("TileSet_wx14w")
+
+[node name="TerrainBoundaries" type="TileMapLayer" parent="."]
+visible = false
+light_mask = 2
+texture_filter = 1
+scale = Vector2(0.1, 0.1)
+tile_map_data = PackedByteArray("AAAMAAIAAAAAAAMAAAANAAIAAAABAAMAAAAOAAIAAAACAAMAAAD//wsAAAAIAAMAAAD//woAAAAIAAMAAAD//wkAAAAIAAMAAAD//wgAAAAIAAMAAAD//wcAAAAIAAMAAAD//wYAAAAIAAMAAAD//wUAAAAIAAMAAAD//wQAAAAIAAMAAAD//wMAAAAIAAMAAAD//wIAAAAIAAMAAAD//wEAAAAIAAMAAAD//wAAAAAIAAMAAAD/////AAAIAAMAAAD///7/AAAIAAMAAAD///3/AAAIAAMAAAATAP3/AAAIAAMAAAATAP7/AAAIAAMAAAATAP//AAAIAAMAAAATAAAAAAAIAAMAAAATAAEAAAAIAAMAAAATAAIAAAAIAAMAAAATAAMAAAAIAAMAAAATAAQAAAAIAAMAAAATAAUAAAAIAAMAAAATAAYAAAAIAAMAAAATAAcAAAAIAAMAAAATAAgAAAAIAAMAAAATAAkAAAAIAAMAAAATAAoAAAAIAAMAAAATAAsAAAAIAAMAAAA=")
 tile_set = SubResource("TileSet_wx14w")
 
 [node name="Spikes" type="TileMapLayer" parent="."]
@@ -468,6 +476,6 @@ position = Vector2(22.917, 3.64741)
 scale = Vector2(-1, 1)
 
 [node name="Target" parent="." instance=ExtResource("4_npyj5")]
-position = Vector2(4, 10)
+position = Vector2(3.96765, 10.647)
 
 [connection signal="body_entered" from="Spikes/Area2D" to="." method="_on_area_2d_body_entered"]

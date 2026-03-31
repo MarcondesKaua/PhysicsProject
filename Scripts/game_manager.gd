@@ -101,6 +101,14 @@ func setup() -> void:
 	
 func launchPlayer(startPosition: Vector2, launchImpulse: Vector2) -> void: 
 	self.player = self.canonBall_scene.instantiate()
+	
+	
+	#RASTRO DA BOLA CONTINUAMENTE:
+	#var trail_scene = preload("res://Scenes/canonballtrail.tscn")
+	#trail_scene= trail_scene.instantiate()
+	#trail_scene.target = self.player
+	#self.world.add_child(trail_scene)
+	
 	self.player.global_position = startPosition
 	self.world.add_child(self.player)
 	#if not self.camera == null: 

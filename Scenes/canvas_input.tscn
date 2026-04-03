@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5jifqwv7ikf2"]
+[gd_scene load_steps=33 format=3 uid="uid://5jifqwv7ikf2"]
 
 [ext_resource type="Script" uid="uid://d4cfm8186jg1e" path="res://Scripts/canvas_input.gd" id="1_v7doh"]
 [ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="2_4g3dx"]
@@ -7,9 +7,77 @@
 [ext_resource type="Texture2D" uid="uid://ppqdred5ka51" path="res://assets/Menu/Rosa dos ventos.png" id="5_vsv4e"]
 [ext_resource type="Texture2D" uid="uid://d34y1iwhqkcwb" path="res://assets/Menu/arrow.png" id="6_3a1wi"]
 [ext_resource type="Script" uid="uid://bbbo26msemuh4" path="res://Scenes/wind_pointer.gd" id="7_rylup"]
+[ext_resource type="Texture2D" uid="uid://cbuplpkmvggmd" path="res://assets/Menu/Scroll-large2.png" id="8_vsv4e"]
+[ext_resource type="Texture2D" uid="uid://ca6ol3uaeqlhy" path="res://assets/Menu/levelButtons2.png" id="9_3a1wi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0nkq"]
+atlas = ExtResource("8_vsv4e")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b038a"]
+atlas = ExtResource("8_vsv4e")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veo5k"]
+atlas = ExtResource("8_vsv4e")
+region = Rect2(192, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kucdi"]
+atlas = ExtResource("8_vsv4e")
+region = Rect2(288, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hynx4"]
+atlas = ExtResource("8_vsv4e")
+region = Rect2(384, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g4ts"]
+atlas = ExtResource("8_vsv4e")
+region = Rect2(480, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sil2f"]
+atlas = ExtResource("8_vsv4e")
+region = Rect2(576, 0, 96, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3a1wi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0nkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b038a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veo5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kucdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hynx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g4ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sil2f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="FontVariation" id="FontVariation_sa17s"]
+base_font = ExtResource("2_4g3dx")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k111n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gvfgu"]
 
 [sub_resource type="Theme" id="Theme_1065b"]
 default_font = ExtResource("2_4g3dx")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3a1wi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ia3cq"]
 
@@ -27,35 +95,127 @@ default_font = ExtResource("2_4g3dx")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vsv4e"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rylup"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sa17s"]
+texture = ExtResource("9_3a1wi")
+region_rect = Rect2(49, 58, 7, 5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k111n"]
+texture = ExtResource("9_3a1wi")
+region_rect = Rect2(55, 54, 7, 5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gvfgu"]
+texture = ExtResource("9_3a1wi")
+region_rect = Rect2(50, 49, 7, 5)
+
 [node name="CanvasInput" type="CanvasLayer" groups=["hud"]]
-layer = 2
 script = ExtResource("1_v7doh")
 
+[node name="Control" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control"]
+texture_filter = 1
+position = Vector2(49.3098, 466.555)
+rotation = -1.5708
+scale = Vector2(8.70569, 10.114)
+sprite_frames = SubResource("SpriteFrames_3a1wi")
+frame = 6
+frame_progress = 1.0
+speed_scale = 2.5
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 750.0
+offset_right = 790.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control2"]
+layout_mode = 0
+offset_left = -80.7196
+offset_top = 123.563
+offset_right = 147.28
+offset_bottom = 192.563
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4g3dx")
+theme_override_font_sizes/font_size = 50
+text = "Gravidade"
+
+[node name="bt_Gravity" type="Button" parent="Control2"]
+visible = false
+layout_mode = 0
+offset_left = -113.245
+offset_top = 242.239
+offset_right = 147.755
+offset_bottom = 301.239
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.745098)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_sa17s")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k111n")
+text = "Gravidade"
+flat = true
+
+[node name="bt_Wind" type="Button" parent="Control2"]
+visible = false
+layout_mode = 0
+offset_left = -106.25
+offset_top = 327.319
+offset_right = 42.7497
+offset_bottom = 386.319
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.705882)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_sa17s")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gvfgu")
+text = "Vento"
+flat = true
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -309.0
-offset_bottom = 33.0
+offset_left = -834.686
+offset_top = 249.091
+offset_right = -525.686
+offset_bottom = 316.091
 grow_horizontal = 0
 theme = SubResource("Theme_1065b")
 
 [node name="LabelGravity" type="Label" parent="HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "GRAVIDADE:"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Força"
 
 [node name="InputGravity" type="LineEdit" parent="HBoxContainer"]
-modulate = Color(1, 0, 0, 1)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3a1wi")
 text = "9.8"
 alignment = 1
 max_length = 4
 flat = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
@@ -132,11 +292,12 @@ pivot_offset = Vector2(15, 15)
 texture = ExtResource("2_om4sa")
 
 [node name="GravityButtonDirection" type="Button" parent="."]
+texture_filter = 1
 custom_minimum_size = Vector2(30, 30)
-offset_left = 1291.36
-offset_top = 33.3384
-offset_right = 1321.36
-offset_bottom = 63.3384
+offset_left = 681.0
+offset_top = 464.0
+offset_right = 858.0
+offset_bottom = 638.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ia3cq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_vsv4e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_3a1wi")
@@ -144,21 +305,25 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_rylup")
 toggle_mode = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 1191.0
-offset_top = 31.929
-offset_right = 1270.0
-offset_bottom = 126.929
+offset_left = 661.598
+offset_top = 387.746
+offset_right = 740.598
+offset_bottom = 482.746
 theme = SubResource("Theme_sa17s")
 
 [node name="Control" type="Control" parent="VBoxContainer"]
 layout_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
 text = "DIREÇÃO:"
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="GravityMenu" type="TextureRect" parent="CanvasLayer"]
 texture_filter = 1
@@ -210,6 +375,17 @@ texture = ExtResource("6_3a1wi")
 offset = Vector2(-0.5, -16)
 script = ExtResource("7_rylup")
 
+[node name="Back_to_menu_button" type="Button" parent="."]
+texture_filter = 1
+offset_left = 32.189
+offset_top = 36.3876
+offset_right = 111.189
+offset_bottom = 107.388
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rylup")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sa17s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k111n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gvfgu")
+
 [connection signal="text_changed" from="HBoxContainer/InputGravity" to="." method="_on_input_gravity_text_changed"]
 [connection signal="text_submitted" from="HBoxContainer/InputGravity" to="." method="_on_input_gravity_text_submitted"]
 [connection signal="pressed" from="HBoxContainer/HBoxContainer2/UpButton" to="." method="_on_up_button_pressed"]
@@ -218,3 +394,4 @@ script = ExtResource("7_rylup")
 [connection signal="pressed" from="HBoxContainer/HBoxContainer2/LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="toggled" from="GravityButtonDirection" to="." method="_on_gravity_button_direction_toggled"]
 [connection signal="pressed" from="CanvasLayer/GravityMenu/ClickChecker" to="." method="_on_click_checker_pressed"]
+[connection signal="pressed" from="Back_to_menu_button" to="." method="_on_back_to_menu_button_pressed"]

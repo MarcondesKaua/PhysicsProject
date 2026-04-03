@@ -54,14 +54,15 @@ func _physics_process(delta: float) -> void:
 
 func add_points(position: Vector2 ) ->void: 
 	self.points_array.append(position)
-	if points_array.size() > MAX_POINTS:
-		points_array.pop_front()
+	if self.points_array.size() > MAX_POINTS:
+		self.points_array.pop_front()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	var trail_scene = preload("res://Scenes/canonballtrail.tscn")
-	trail_scene= trail_scene.instantiate()
-	trail_scene.target = self
-	trail_scene.set_trail(self.points_array)
-	get_parent().add_child(trail_scene)
+	#RASTRO SÓ QUANDO MORRER (pode ser interessante)
+	#var trail_scene = preload("res://Scenes/canonballtrail.tscn")
+	#trail_scene= trail_scene.instantiate()
+	#trail_scene.target = self
+	#trail_scene.set_trail(self.points_array)
+	#get_parent().add_child(trail_scene)
 	queue_free()

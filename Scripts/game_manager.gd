@@ -104,10 +104,10 @@ func launchPlayer(startPosition: Vector2, launchImpulse: Vector2) -> void:
 	
 	
 	#RASTRO DA BOLA CONTINUAMENTE:
-	#var trail_scene = preload("res://Scenes/canonballtrail.tscn")
-	#trail_scene= trail_scene.instantiate()
-	#trail_scene.target = self.player
-	#self.world.add_child(trail_scene)
+	var trail_scene = preload("res://Scenes/canonballtrail.tscn")
+	trail_scene= trail_scene.instantiate()
+	trail_scene.target = self.player
+	self.world.add_child(trail_scene)
 	
 	self.player.global_position = startPosition
 	self.world.add_child(self.player)

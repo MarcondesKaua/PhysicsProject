@@ -9,23 +9,25 @@ const UPDATE_POINTS_FREQUENCY = 0.08
 var target: canonBall
 var points_array: Array[Vector2] = []
 var last_updated_time: float = 0.0
+
 func _ready() -> void:
-	line2d.points = points_array
+	self.line2d.points = points_array
+
 func _process(delta: float) -> void:
-	if is_instance_valid(target):
-		last_updated_time +=delta
+	if is_instance_valid(self.target):
+		self.last_updated_time +=delta
 		
-		if last_updated_time >= UPDATE_POINTS_FREQUENCY:
+		if self.last_updated_time >= self.UPDATE_POINTS_FREQUENCY:
 			add_points(target.global_position)
-			last_updated_time = 0.0
-	pass
+			self.last_updated_time = 0.0
+	
 
 func add_points(position: Vector2 ) ->void: 
 	self.points_array.append(position)
-	if points_array.size() > MAX_POINTS:
-		points_array.pop_front()
-	line2d.points = points_array
-	pass
+	if self.points_array.size() > self.MAX_POINTS:
+		return
+	self.line2d.points = self.points_array
+	
 
 func set_trail(points : Array[Vector2]):
 	self.points_array = points

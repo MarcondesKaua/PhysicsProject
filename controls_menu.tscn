@@ -1,0 +1,280 @@
+[gd_scene load_steps=30 format=3 uid="uid://c53j36kahx80a"]
+
+[ext_resource type="Texture2D" uid="uid://5blvrqmkdec5" path="res://assets/Menu/Sprite-0004-2.png" id="1_7yx0y"]
+[ext_resource type="Script" uid="uid://da4081lycj7k7" path="res://controls_menu.gd" id="1_ovn7s"]
+[ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="1_v34rh"]
+[ext_resource type="Texture2D" uid="uid://ca6ol3uaeqlhy" path="res://assets/Menu/levelButtons2.png" id="4_urwwa"]
+[ext_resource type="Texture2D" uid="uid://cbuplpkmvggmd" path="res://assets/Menu/Scroll-large2.png" id="5_2qtxy"]
+
+[sub_resource type="Animation" id="Animation_urwwa"]
+resource_name = "RESET"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Back_Menu_Color:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2qtxy"]
+resource_name = "Fade_in"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Back_Menu_Color:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.431373)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0nkq"]
+_data = {
+&"Fade_in": SubResource("Animation_2qtxy"),
+&"RESET": SubResource("Animation_urwwa")
+}
+
+[sub_resource type="FontVariation" id="FontVariation_ovn7s"]
+base_font = ExtResource("1_v34rh")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v34rh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ovn7s"]
+texture = ExtResource("1_7yx0y")
+region_rect = Rect2(54, 502, 336, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urwwa"]
+texture = ExtResource("1_7yx0y")
+region_rect = Rect2(54, 302, 336, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2qtxy"]
+texture = ExtResource("1_7yx0y")
+region_rect = Rect2(54, 92, 336, 160)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2qtxy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y0nkq"]
+texture = ExtResource("4_urwwa")
+region_rect = Rect2(49, 58, 7, 5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b038a"]
+texture = ExtResource("4_urwwa")
+region_rect = Rect2(55, 54, 7, 5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_veo5k"]
+texture = ExtResource("4_urwwa")
+region_rect = Rect2(50, 49, 7, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0nkq"]
+atlas = ExtResource("5_2qtxy")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b038a"]
+atlas = ExtResource("5_2qtxy")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veo5k"]
+atlas = ExtResource("5_2qtxy")
+region = Rect2(192, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kucdi"]
+atlas = ExtResource("5_2qtxy")
+region = Rect2(288, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hynx4"]
+atlas = ExtResource("5_2qtxy")
+region = Rect2(384, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g4ts"]
+atlas = ExtResource("5_2qtxy")
+region = Rect2(480, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sil2f"]
+atlas = ExtResource("5_2qtxy")
+region = Rect2(576, 0, 96, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ftodl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0nkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b038a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veo5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kucdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hynx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g4ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sil2f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0nkq"]
+
+[sub_resource type="FontVariation" id="FontVariation_2qtxy"]
+base_font = ExtResource("1_v34rh")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b038a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_veo5k"]
+
+[node name="Controls_Menu" type="CanvasLayer" node_paths=PackedStringArray("anmPlayer", "anm_Scroll")]
+script = ExtResource("1_ovn7s")
+anmPlayer = NodePath("Back_Menu/Menu_Transition")
+anm_Scroll = NodePath("Control/AnimatedSprite2D")
+
+[node name="Back_Menu" type="CanvasLayer" parent="."]
+
+[node name="Back_Menu_Color" type="ColorRect" parent="Back_Menu"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.36, 0.2052, 0.0504, 1)
+
+[node name="Menu_Transition" type="AnimationPlayer" parent="Back_Menu"]
+libraries = {
+&"": SubResource("AnimationLibrary_y0nkq")
+}
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -140.0
+offset_top = 5.0
+offset_right = -7.0
+offset_bottom = 76.0
+grow_horizontal = 0
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontVariation_ovn7s")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v34rh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ovn7s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_urwwa")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2qtxy")
+text = "Controls"
+
+[node name="Back_to_menu_button" type="Button" parent="."]
+offset_left = 32.189
+offset_top = 36.3876
+offset_right = 111.189
+offset_bottom = 107.388
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2qtxy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_y0nkq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b038a")
+theme_override_styles/normal = SubResource("StyleBoxTexture_veo5k")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(49.3098, 466.555)
+rotation = -1.5708
+scale = Vector2(8.70569, 10.114)
+sprite_frames = SubResource("SpriteFrames_ftodl")
+frame = 6
+frame_progress = 1.0
+
+[node name="Control" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control/Control"]
+layout_mode = 0
+offset_left = -80.7196
+offset_top = 123.563
+offset_right = 147.28
+offset_bottom = 192.563
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_v34rh")
+theme_override_font_sizes/font_size = 50
+text = "Variaveis"
+
+[node name="Label2" type="Label" parent="Control/Control"]
+layout_mode = 0
+offset_left = -92.8199
+offset_top = 674.436
+offset_right = 76.1801
+offset_bottom = 743.436
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_v34rh")
+theme_override_font_sizes/font_size = 50
+text = "Rastro"
+
+[node name="CheckButton" type="CheckButton" parent="Control/Control/Label2"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 169.156
+offset_top = 4.18066
+offset_right = 213.156
+offset_bottom = 28.1807
+scale = Vector2(2, 2)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y0nkq")
+
+[node name="Button2" type="Button" parent="Control/Control"]
+layout_mode = 0
+offset_left = -109.702
+offset_top = 265.269
+offset_right = 151.298
+offset_bottom = 324.269
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_2qtxy")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b038a")
+text = "Gravidade"
+flat = true
+
+[node name="Button3" type="Button" parent="Control/Control"]
+layout_mode = 0
+offset_left = -150.7
+offset_top = 357.776
+offset_right = 85.3
+offset_bottom = 416.776
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_2qtxy")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_veo5k")
+text = "Vento"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Back_to_menu_button" to="." method="_on_back_to_menu_button_pressed"]

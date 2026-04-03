@@ -25,10 +25,31 @@ func _on_button_pressed() -> void:
 
 
 func _on_back_to_menu_button_pressed() -> void:
+	animation()
+	self.bt_to_menu.visible = true
+	self.anmPlayer.play_backwards("Fade_in")
+
+func _on_bt_gravity_pressed() -> void:
+	
+	if GameManager.gravInst != null:
+		await animation()
+		GameManager.gravInst.set_menu_visable(true)
+		
+	
+	print("Grav funciona")
+
+
+func _on_bt_wind_pressed() -> void:
+	if GameManager.windInst != null:
+		await animation()
+		GameManager.windInst.set_menu_visable(true)
+	print("Vent tambem funciona")
+	
+func animation()->void: 
 	self.control_labels_vars.visible = false
 	self.bt_back_menu.visible = false
 	self.anm_Scroll.play_backwards("default")
-	self.anmPlayer.play_backwards("Fade_in")
+
+	
 	await self.anm_Scroll.animation_finished 
 	self.anm_Scroll.visible = false
-	self.bt_to_menu.visible = true

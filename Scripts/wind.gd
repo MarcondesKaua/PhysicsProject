@@ -10,13 +10,14 @@ signal windChanged(newWind: float)
 @onready var windConteiner: HBoxContainer = $CanvasLayer/VBoxContainer/HBoxForce
 
 @onready var windPointer = $CanvasLayer/WindMenu
-
+@onready var canvas = $CanvasLayer
 var windForce: float = 5
 var windDirection: Vector2 = Vector2.RIGHT
 
 
 func _ready() -> void:
 	add_to_group("wind")
+	
 	self.inputWind.text = str(windForce)
 	self.checkButton.button_pressed = false
 	self.windParticles.visible = false
@@ -26,9 +27,10 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
+	if not self.visible:
+		return
+	
 	var windActive = self.checkButton.button_pressed
-	
-	
 	
 	self.windParticles.emitting = windActive
 	self.windParticles.visible = windActive
@@ -148,3 +150,7 @@ func _on_click_checker_pressed() -> void:
 	self.checkButton.button_pressed = true
 	
 	print("Vento setado para: ", applicableDirection, " com força: ", self.windForce)
+	
+func set_menu_visable (is_visible : bool) -> void:
+	self.visible = is_visible
+	self.canvas.visible = is_visible

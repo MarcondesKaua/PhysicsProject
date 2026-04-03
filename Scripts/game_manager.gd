@@ -1,5 +1,6 @@
 extends Node
 
+var menu_controls_scene = preload("res://Scenes/controls_menu.tscn")
 var menu_scene = preload("res://Scenes/main_menu.tscn")
 var level_selection_scene = preload("res://Scenes/level_selection.tscn")
 var world_viewscene = preload("res://Scenes/world_view.tscn")
@@ -9,6 +10,8 @@ var canonBall_scene = preload("res://Scenes/canonball.tscn")
 var canonScene = preload ("res://Scenes/canon.tscn")
 var windScene = preload("res://Scenes/wind.tscn")
 
+var windInst : Node = null
+var gravInst : Node = null
 
 var player: canonBall = null
 var world: Node2D = null
@@ -74,15 +77,38 @@ func loading_levels(level_loading: PackedScene) -> void:
 
 func setup() -> void:
 	print("Iniciando setup dos elementos...")
-	
+	 #TESSSTEE
 	
 	var localCanvasInput = self.canvasInput.instantiate()
 	var localWind = self.windScene.instantiate()
-	var localCanon = self.canonScene.instantiate()
+	
+	localCanvasInput.set_menu_visable(false)
+	
 	
 	self.world.add_child(localCanvasInput)
 	self.world.add_child(localWind)
+	localWind.set_menu_visable(false)
+	self.gravInst= localCanvasInput
+	self.windInst = localWind
 	
+	
+	#TESTEE ACABA AQUI
+	
+	
+	#
+	#var localCanvasInput = self.canvasInput.instantiate()
+	#var localWind = self.windScene.instantiate()
+	#var localCanon = self.canonScene.instantiate()
+	#
+	#localCanvasInput.visible = false
+	#localWind.visible = false
+	#
+	#self.world.add_child(localCanvasInput)
+	#self.world.add_child(localWind)
+	#
+	
+	var local_controls_menu = self.menu_controls_scene.instantiate()
+	self.world.add_child(local_controls_menu)
 	
 	
 	#Aqui começa a bagunça

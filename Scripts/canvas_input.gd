@@ -9,7 +9,7 @@ var currentGravity : float = 9.8
 var currentGravityDirection : Vector2 = Vector2.DOWN
 
 @onready var gravityPointer: TextureRect = $CanvasLayer/GravityMenu
-
+@onready var anm_scroll: AnimatedSprite2D = $Control/AnimatedSprite2D
 
 func _ready() -> void:
 	
@@ -99,3 +99,26 @@ func _on_click_checker_pressed() -> void:
 func _on_gravity_button_direction_toggled(toggled_on: bool) -> void:
 	print("foi")
 	self.gravityPointer.visible = !self.gravityPointer.visible
+
+func set_menu_visable (is_visible : bool) -> void:
+	self.visible = is_visible
+
+
+func _on_back_to_menu_button_pressed() -> void:
+# 1. Esconda os containers de texto e botões IMEDIATAMENTE
+	$HBoxContainer.visible = false
+	$GravityButtonDirection.visible = false
+	$VBoxContainer.visible = false 
+	$Control2.visible = false
+	
+	# Se você tiver outros botões ou labels, esconda-os aqui também:
+	# $SeuVBoxContainer.visible = false
+
+	# 2. Agora sim, toca a animação de fechar o pergaminho
+	self.anm_scroll.play_backwards("default")
+	
+	# 3. Espera o desenho sumir
+	await self.anm_scroll.animation_finished
+	
+	# 4. Desliga o menu inteiro
+	set_menu_visable(false)

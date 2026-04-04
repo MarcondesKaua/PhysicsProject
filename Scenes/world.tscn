@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://brng1v2av12w5"]
+[gd_scene load_steps=15 format=4 uid="uid://brng1v2av12w5"]
 
 [ext_resource type="Script" uid="uid://h5ejun3rqcub" path="res://Scripts/level_1.gd" id="1_o06y3"]
 [ext_resource type="Texture2D" uid="uid://lwb0b0jwxo7s" path="res://assets/BgLevels/DaySky.png" id="2_5v1tr"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://blhd4cng5jw0b" path="res://assets/Dirt-&-Grass-2D-Platform-Tileset_ver.2_by_AxulArt/grass tileset ver.2.png" id="4_7yui6"]
 [ext_resource type="PackedScene" uid="uid://bms00f6l0qr5c" path="res://Scenes/target.tscn" id="6_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://dsd0gnqchiqf" path="res://Scenes/canon.tscn" id="7_o06y3"]
-[ext_resource type="Texture2D" uid="uid://ca6ol3uaeqlhy" path="res://assets/Menu/levelButtons2.png" id="8_k7acu"]
 [ext_resource type="Texture2D" uid="uid://b808aywnrfxoq" path="res://assets/Super Mario MEGA Tileset/Overworld.png" id="10_0fj1v"]
 [ext_resource type="Texture2D" uid="uid://mb13gmbws8b5" path="res://assets/Sunny Land Collection Files/Assets/Environments/SunnyLand/Layers/tileset.png" id="11_ikia7"]
 
@@ -3783,20 +3782,6 @@ texture = ExtResource("3_fo5ed")
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_k7acu")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5v1tr"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k7acu"]
-texture = ExtResource("8_k7acu")
-region_rect = Rect2(49, 58, 7, 5)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ikia7"]
-texture = ExtResource("8_k7acu")
-region_rect = Rect2(55, 54, 7, 5)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7yui6"]
-texture = ExtResource("8_k7acu")
-region_rect = Rect2(50, 49, 7, 5)
-
 [node name="World_1" type="Node2D"]
 script = ExtResource("1_o06y3")
 
@@ -3835,17 +3820,3 @@ position = Vector2(1.10455, 9.95257)
 
 [node name="Target" parent="." instance=ExtResource("6_5ukr8")]
 position = Vector2(20.6214, 5.23776)
-
-[node name="Back_to_menu_select_button" type="Button" parent="."]
-texture_filter = 1
-offset_top = -3.0
-offset_right = 1.0
-offset_bottom = -2.0
-size_flags_stretch_ratio = 0.0
-focus_mode = 0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_5v1tr")
-theme_override_styles/hover = SubResource("StyleBoxTexture_k7acu")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_ikia7")
-theme_override_styles/normal = SubResource("StyleBoxTexture_7yui6")
-
-[connection signal="pressed" from="Back_to_menu_select_button" to="." method="_on_back_to_menu_select_button_pressed"]

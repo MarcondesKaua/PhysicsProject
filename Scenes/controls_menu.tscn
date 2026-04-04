@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://c53j36kahx80a"]
 
 [ext_resource type="Texture2D" uid="uid://5blvrqmkdec5" path="res://assets/Menu/Sprite-0004-2.png" id="1_7yx0y"]
-[ext_resource type="Script" uid="uid://da4081lycj7k7" path="res://controls_menu.gd" id="1_ovn7s"]
+[ext_resource type="Script" uid="uid://da4081lycj7k7" path="res://Scripts/controls_menu.gd" id="1_ovn7s"]
 [ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="1_v34rh"]
 [ext_resource type="Texture2D" uid="uid://ca6ol3uaeqlhy" path="res://assets/Menu/levelButtons2.png" id="4_urwwa"]
 [ext_resource type="Texture2D" uid="uid://cbuplpkmvggmd" path="res://assets/Menu/Scroll-large2.png" id="5_2qtxy"]
@@ -141,10 +141,10 @@ base_font = ExtResource("1_v34rh")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_veo5k"]
 
-[node name="Controls_Menu" type="CanvasLayer" node_paths=PackedStringArray("anmPlayer", "anm_Scroll")]
+[node name="Controls_Menu" type="CanvasLayer" node_paths=PackedStringArray("anm_player", "anm_scroll")]
 script = ExtResource("1_ovn7s")
-anmPlayer = NodePath("Back_Menu/Menu_Transition")
-anm_Scroll = NodePath("Control/AnimatedSprite2D")
+anm_player = NodePath("Back_Menu/Menu_Transition")
+anm_scroll = NodePath("Control/AnimatedSprite2D")
 
 [node name="Back_Menu" type="CanvasLayer" parent="."]
 

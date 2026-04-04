@@ -323,7 +323,6 @@ text = "DIREÇÃO:"
 metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="GravityMenu" type="TextureRect" parent="CanvasLayer"]
 texture_filter = 1

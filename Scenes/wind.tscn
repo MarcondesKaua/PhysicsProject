@@ -270,8 +270,8 @@ trail_sections = 96
 trail_section_subdivisions = 96
 process_material = SubResource("ParticleProcessMaterial_bej4f")
 
-[connection signal="pressed" from="CanvasLayer/WindMenu/ClickChecker" to="." method="_on_click_checker_pressed"]
 [connection signal="pressed" from="CanvasLayer/WindMenu/ClickChecker" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WindMenu/ClickChecker" to="." method="_on_click_checker_pressed"]
 [connection signal="toggled" from="CanvasLayer/VBoxContainer/HBoxStatus/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxStatus/WindDirectionMenu" to="." method="_on_wind_direction_menu_pressed"]
 [connection signal="text_changed" from="CanvasLayer/VBoxContainer/HBoxForce/InputWindForce" to="." method="_on_input_wind_force_text_changed"]

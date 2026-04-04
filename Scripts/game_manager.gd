@@ -3,21 +3,23 @@ extends Node
 var menu_controls_scene = preload("res://Scenes/controls_menu.tscn")
 var menu_scene = preload("res://Scenes/main_menu.tscn")
 var level_selection_scene = preload("res://Scenes/level_selection.tscn")
-var world_viewscene = preload("res://Scenes/world_view.tscn")
-var canvasInput = preload("res://Scenes/canvas_input.tscn")
+var world_view_scene = preload("res://Scenes/world_view.tscn")
+var canvas_input_scene = preload("res://Scenes/canvas_input.tscn")
 
-var canonBall_scene = preload("res://Scenes/canonball.tscn")
-var canonScene = preload ("res://Scenes/canon.tscn")
-var windScene = preload("res://Scenes/wind.tscn")
+var canon_ball_scene = preload("res://Scenes/canonball.tscn")
+var canon_scene = preload ("res://Scenes/canon.tscn")
+var wind_scene = preload("res://Scenes/wind.tscn")
 
-var windInst : Node = null
-var gravInst : Node = null
+var wind_inst : Node = null
+var grav_inst : Node = null
 
-var player: canonBall = null
+var player: CanonBall = null
 var world: Node2D = null
 var root: Node2D = null
 var camera: Camera2D = null
 var wind: Node2D = null
+
+var game_paused: bool = false
 
 #func _ready() -> void:
 	#get_tree().change_scene_to_packed(self.menu_scene)
@@ -33,17 +35,17 @@ func _go_to_level_selection() -> void:
 
 func loading_levels(level_loading: PackedScene) -> void:
 	
-	await SceneTransition.change_scene(self.world_viewscene)
+	await SceneTransition.change_scene(self.world_view_scene)
 	
 	await get_tree().process_frame
 	
-	var world_in_viewscene = get_tree().root.get_node("WorldView/SubViewportContainer/SubViewport/World")
+	var world_in_view_scene = get_tree().root.get_node("WorldView/SubViewportContainer/SubViewport/World")
 	
-	if world_in_viewscene:
+	if world_in_view_scene:
 		var level_loading_instance = level_loading.instantiate()
-		world_in_viewscene.add_child(level_loading_instance)
-		self.world = world_in_viewscene
-		setup()
+		world_in_view_scene.add_child(level_loading_instance)
+		self.world = world_in_view_scene
+		self.setup()
 	else:
 		print("Erro fatal de cena")
 		
@@ -79,17 +81,17 @@ func setup() -> void:
 	print("Iniciando setup dos elementos...")
 	 #TESSSTEE
 	
-	var localCanvasInput = self.canvasInput.instantiate()
-	var localWind = self.windScene.instantiate()
+	var local_canvas_input = self.canvas_input_scene.instantiate()
+	var local_wind = self.wind_scene.instantiate()
 	
-	localCanvasInput.set_menu_visable(false)
+	local_canvas_input.set_menu_visable(false)
 	
 	
-	self.world.add_child(localCanvasInput)
-	self.world.add_child(localWind)
-	localWind.set_menu_visable(false)
-	self.gravInst= localCanvasInput
-	self.windInst = localWind
+	self.world.add_child(local_canvas_input)
+	self.world.add_child(local_wind)
+	local_wind.set_menu_visable(false)
+	self.grav_inst = local_canvas_input
+	self.wind_inst = local_wind
 	
 	
 	#TESTEE ACABA AQUI
@@ -125,20 +127,18 @@ func setup() -> void:
 		#
 	#Até aqui, por que nao vai ? sla, mas ta inutil e funcional
 	
-func launchPlayer(startPosition: Vector2, launchImpulse: Vector2) -> void: 
-	self.player = self.canonBall_scene.instantiate()
+func launch_player(start_position: Vector2, launch_impulse: Vector2) -> void: 
+	self.player = self.canon_ball_scene.instantiate()
 	
 	
 	#RASTRO DA BOLA CONTINUAMENTE:
 	var trail_scene = preload("res://Scenes/canonballtrail.tscn")
-	trail_scene= trail_scene.instantiate()
-	trail_scene.target = self.player
-	self.world.add_child(trail_scene)
+	var trail_instance = trail_scene.instantiate()
+	trail_instance.target = self.player
+	self.world.add_child(trail_instance)
 	
-	self.player.global_position = startPosition
+	self.player.global_position = start_position
 	self.world.add_child(self.player)
 	#if not self.camera == null: 
 		#self.camera.targetPlayer(self.player) #Foca na bola de canhão 
-	self.player.apply_central_impulse(launchImpulse)
-	
-	
+	self.player.apply_central_impulse(launch_impulse)

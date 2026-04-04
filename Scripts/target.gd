@@ -1,57 +1,62 @@
 extends Node2D
 class_name Target
 
-@onready var dectectionArea: Area2D = $TargetArea
-@export var distanceDirection: bool = true
+@onready var dectection_area: Area2D = $TargetArea
+@export var distance_direction: bool = true
 
-var currentLocation: Vector2
+var current_location: Vector2
 var distance: float = 5.0
-var currentSpeed:float = 1.0
+var current_speed: float = 1.0
 
+var min_x: float = 5.0
+var max_x: float = 25.0
+var respawn_y: float = 5.0
+var min_speed_scale: float = 1.0
+var max_speed_scale: float = 2.5
 
-var minX: float = 5.0
-var maxX: float = 25.0
-var respawnY: float = 5.0
-var minSpeedScale: float = 1.0
-var maxSpeedScale: float = 2.5
-
+var time:float = 0.0
 func _ready() -> void:
-	add_to_group("target")
-	self.currentLocation = global_position
-	randomize_movement_speed()
-	self.dectectionArea.body_entered.connect(targetHitted)
+	self.add_to_group("target")
+	self.current_location = self.global_position
+	self.randomize_movement_speed()
+	self.dectection_area.body_entered.connect(self.target_hitted)
 
-func _process(delta: float) -> void:
-	var time = Time.get_ticks_msec() / 1000.0 
-	var offsetX = sin(time * self.currentSpeed) * self.distance
-	var offsetY = sin(time * self.currentSpeed) * self.distance - 3
-	if distanceDirection == true:
-		global_position = self.currentLocation + Vector2(0, offsetY) # outra variavel para corrigir margem no eixo y
+func _process(_delta: float) -> void:
+	if GameManager.game_paused:
+		return
+	
+	self.time += _delta
+	var offset_x = sin(time * self.current_speed) * self.distance
+	var offset_y = sin(time * self.current_speed) * self.distance - 3
+	
+	if self.distance_direction == true:
+		self.global_position = self.current_location + Vector2(0, offset_y) # outra variavel para corrigir margem no eixo y
 	else:
-		global_position = self.currentLocation + Vector2(offsetX, 0)
+		self.global_position = self.current_location + Vector2(offset_x, 0)
 	
 	
-func targetHitted (body: Node2D) -> void: 
+func target_hitted(body: Node2D) -> void: 
 	self.visible = false
-	if body is canonBall:
+	if body is CanonBall:
 		body.queue_free()
-	await get_tree().create_timer(0.3).timeout
+	
+	await self.get_tree().create_timer(0.3).timeout
 	
 	GameManager._go_to_level_selection()
 
-		#respawn()
+	#respawn()
 
 func respawn() -> void:
-	var newX = randf_range(self.minX, self.maxX)
-	self.currentLocation = Vector2(newX, self.respawnY) 
-	global_position = self.currentLocation
-	randomize_movement_speed()
+	var new_x = randf_range(self.min_x, self.max_x)
+	self.current_location = Vector2(new_x, self.respawn_y) 
+	self.global_position = self.current_location
+	self.randomize_movement_speed()
 
 	
 func randomize_movement_speed() -> void:
-	var newSpeed = randf_range(self.minSpeedScale, self.maxSpeedScale)
-	self.currentSpeed = newSpeed
+	var new_speed = randf_range(self.min_speed_scale, self.max_speed_scale)
+	self.current_speed = new_speed
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggleTargetMoveDirection"):
-		distanceDirection= !distanceDirection
+		self.distance_direction = !self.distance_direction

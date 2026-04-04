@@ -6,7 +6,7 @@ const MAX_POINTS = 100.0
 const UPDATE_POINTS_FREQUENCY = 0.08
 
 
-var target: canonBall
+var target: CanonBall
 var points_array: Array[Vector2] = []
 var last_updated_time: float = 0.0
 

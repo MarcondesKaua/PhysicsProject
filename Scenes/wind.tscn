@@ -1,17 +1,77 @@
-[gd_scene load_steps=20 format=3 uid="uid://b7yrbs64eaq0l"]
+[gd_scene load_steps=35 format=3 uid="uid://b7yrbs64eaq0l"]
 
 [ext_resource type="Script" uid="uid://33l2q4kmaupk" path="res://Scripts/wind.gd" id="1_gc4i6"]
+[ext_resource type="Texture2D" uid="uid://cbuplpkmvggmd" path="res://assets/Menu/Scroll-large2.png" id="2_03thp"]
 [ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="2_4dp6s"]
 [ext_resource type="Texture2D" uid="uid://07sadu6ok4a" path="res://assets/Boulders/arrow.png" id="2_43i0t"]
 [ext_resource type="Texture2D" uid="uid://dsvxiijxrldgo" path="res://assets/Menu/pixilart-drawing.png" id="2_h5oiq"]
 [ext_resource type="Texture2D" uid="uid://ppqdred5ka51" path="res://assets/Menu/Rosa dos ventos.png" id="3_xtwxx"]
 [ext_resource type="Texture2D" uid="uid://d34y1iwhqkcwb" path="res://assets/Menu/arrow.png" id="4_03thp"]
 [ext_resource type="Script" uid="uid://bbbo26msemuh4" path="res://Scenes/wind_pointer.gd" id="5_xtwxx"]
+[ext_resource type="Texture2D" uid="uid://ca6ol3uaeqlhy" path="res://assets/Menu/levelButtons2.png" id="9_0mxu8"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtwxx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0nkq"]
+atlas = ExtResource("2_03thp")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b038a"]
+atlas = ExtResource("2_03thp")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veo5k"]
+atlas = ExtResource("2_03thp")
+region = Rect2(192, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kucdi"]
+atlas = ExtResource("2_03thp")
+region = Rect2(288, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hynx4"]
+atlas = ExtResource("2_03thp")
+region = Rect2(384, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g4ts"]
+atlas = ExtResource("2_03thp")
+region = Rect2(480, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sil2f"]
+atlas = ExtResource("2_03thp")
+region = Rect2(576, 0, 96, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mxu8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0nkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b038a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veo5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kucdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hynx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g4ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sil2f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Theme" id="Theme_btdmq"]
 default_font = ExtResource("2_4dp6s")
+
+[sub_resource type="FontVariation" id="FontVariation_03thp"]
+base_font = ExtResource("2_4dp6s")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_03thp"]
 
@@ -23,6 +83,22 @@ texture = ExtResource("2_h5oiq")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xtwxx"]
 texture = ExtResource("2_h5oiq")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtwxx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dcq6b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8tu0o"]
+texture = ExtResource("9_0mxu8")
+region_rect = Rect2(49, 58, 7, 5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hmsfb"]
+texture = ExtResource("9_0mxu8")
+region_rect = Rect2(55, 54, 7, 5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_njeuf"]
+texture = ExtResource("9_0mxu8")
+region_rect = Rect2(50, 49, 7, 5)
 
 [sub_resource type="Gradient" id="Gradient_iwlsb"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -62,129 +138,89 @@ scale_min = 0.04
 scale_max = 0.04
 color = Color(1, 1, 1, 0.243137)
 
-[node name="Wind" type="Node2D" groups=["wind"]]
+[node name="Wind" type="Node2D" node_paths=PackedStringArray("anm_scroll") groups=["wind"]]
 process_mode = 3
 script = ExtResource("1_gc4i6")
+anm_scroll = NodePath("CanvasLayer/Control/AnimatedSprite2D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
-[node name="WindMenu" type="TextureRect" parent="CanvasLayer"]
-process_mode = 3
+[node name="Control" type="Control" parent="CanvasLayer"]
 texture_filter = 1
-anchors_preset = 8
+layout_mode = 3
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -360.0
-offset_top = -361.5
-offset_right = 360.0
-offset_bottom = 361.5
 grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("2_h5oiq")
+size_flags_horizontal = 4
 
-[node name="ClickChecker" type="Button" parent="CanvasLayer/WindMenu"]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xtwxx")
-flat = true
-
-[node name="WindRose" type="TextureRect" parent="CanvasLayer/WindMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -309.0
-offset_top = -318.5
-offset_right = 309.0
-offset_bottom = 319.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(309, 319)
-mouse_filter = 2
-texture = ExtResource("3_xtwxx")
-
-[node name="WindPointer" type="Sprite2D" parent="CanvasLayer/WindMenu/WindRose"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 texture_filter = 1
-position = Vector2(309.304, 318.909)
-scale = Vector2(7.74341, 9.86411)
-texture = ExtResource("4_03thp")
-offset = Vector2(-0.5, -16)
-script = ExtResource("5_xtwxx")
+position = Vector2(49.31, 466.555)
+rotation = -1.5708
+scale = Vector2(8.70569, 10.5299)
+sprite_frames = SubResource("SpriteFrames_0mxu8")
+frame = 6
+frame_progress = 1.0
+speed_scale = 2.5
+
+[node name="Control2" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 750.0
+offset_right = 790.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control2"]
+layout_mode = 0
+offset_left = -80.7196
+offset_top = 123.563
+offset_right = 147.28
+offset_bottom = 192.563
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4dp6s")
+theme_override_font_sizes/font_size = 50
+text = "Vento"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -362.251
-offset_top = 76.0072
-offset_right = 6.74902
-offset_bottom = 140.007
+offset_left = -862.707
+offset_top = 261.016
+offset_right = -493.707
+offset_bottom = 325.016
 grow_horizontal = 0
 theme = SubResource("Theme_btdmq")
-
-[node name="HBoxStatus" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer/HBoxStatus"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="WindLabel" type="Label" parent="CanvasLayer/VBoxContainer/HBoxStatus"]
-modulate = Color(1, 0, 0, 1)
-layout_mode = 2
-text = "VENTO:"
-
-[node name="CheckButton" type="CheckButton" parent="CanvasLayer/VBoxContainer/HBoxStatus"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="Control2" type="Control" parent="CanvasLayer/VBoxContainer/HBoxStatus"]
-layout_mode = 2
-
-[node name="WindLabel2" type="Label" parent="CanvasLayer/VBoxContainer/HBoxStatus"]
-modulate = Color(1, 0, 0, 1)
-layout_mode = 2
-text = "DIREÇÃO:"
-
-[node name="WindDirectionMenu" type="Button" parent="CanvasLayer/VBoxContainer/HBoxStatus"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_03thp")
-theme_override_styles/hover = SubResource("StyleBoxTexture_0mxu8")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_dcq6b")
-theme_override_styles/normal = SubResource("StyleBoxTexture_xtwxx")
+theme_override_constants/separation = 5
 
 [node name="HBoxForce" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 
 [node name="WindForceLabel" type="Label" parent="CanvasLayer/VBoxContainer/HBoxForce"]
-modulate = Color(1, 0, 0, 1)
+texture_filter = 1
 layout_mode = 2
-text = "FORÇA DO VENTO:"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Velocidade:"
 
 [node name="InputWindForce" type="LineEdit" parent="CanvasLayer/VBoxContainer/HBoxForce"]
 unique_name_in_owner = true
-modulate = Color(1, 0, 0, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
 text = "0"
-alignment = 1
 max_length = 4
 flat = true
 
 [node name="HBoxDirections" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxForce"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="UpButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections"]
 custom_minimum_size = Vector2(30, 30)
@@ -257,6 +293,105 @@ rotation = -1.5708
 pivot_offset = Vector2(15, 15)
 texture = ExtResource("2_43i0t")
 
+[node name="Control3" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 641.293
+offset_top = 312.016
+offset_right = 641.293
+offset_bottom = 312.016
+
+[node name="WindLabel2" type="Label" parent="CanvasLayer/Control3"]
+layout_mode = 0
+offset_left = 0.654968
+offset_top = 72.509
+offset_right = 369.657
+offset_bottom = 127.509
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_03thp")
+theme_override_font_sizes/font_size = 40
+text = "Direção:"
+
+[node name="WindDirectionMenu" type="Button" parent="CanvasLayer/Control3"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 39.707
+offset_top = 151.984
+offset_right = 216.707
+offset_bottom = 325.984
+theme_override_styles/focus = SubResource("StyleBoxEmpty_03thp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0mxu8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dcq6b")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xtwxx")
+icon_alignment = 1
+
+[node name="WindMenu" type="TextureRect" parent="CanvasLayer/Control3"]
+process_mode = 3
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -251.293
+offset_top = -223.516
+offset_right = 468.707
+offset_bottom = 499.484
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_h5oiq")
+
+[node name="ClickChecker" type="Button" parent="CanvasLayer/Control3/WindMenu"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xtwxx")
+flat = true
+
+[node name="WindRose" type="TextureRect" parent="CanvasLayer/Control3/WindMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -309.0
+offset_top = -318.5
+offset_right = 309.0
+offset_bottom = 319.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(309, 319)
+mouse_filter = 2
+texture = ExtResource("3_xtwxx")
+
+[node name="WindPointer" type="Sprite2D" parent="CanvasLayer/Control3/WindMenu/WindRose"]
+texture_filter = 1
+position = Vector2(309.304, 318.909)
+scale = Vector2(7.74341, 9.86411)
+texture = ExtResource("4_03thp")
+offset = Vector2(-0.5, -16)
+script = ExtResource("5_xtwxx")
+
+[node name="Back_to_menu_button" type="Button" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 32.189
+offset_top = 36.3876
+offset_right = 111.189
+offset_bottom = 107.388
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dcq6b")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8tu0o")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_hmsfb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_njeuf")
+
 [node name="WindParticles" type="GPUParticles2D" parent="."]
 process_mode = 1
 amount = 100
@@ -270,13 +405,13 @@ trail_sections = 96
 trail_section_subdivisions = 96
 process_material = SubResource("ParticleProcessMaterial_bej4f")
 
-[connection signal="pressed" from="CanvasLayer/WindMenu/ClickChecker" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/WindMenu/ClickChecker" to="." method="_on_click_checker_pressed"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/HBoxStatus/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxStatus/WindDirectionMenu" to="." method="_on_wind_direction_menu_pressed"]
 [connection signal="text_changed" from="CanvasLayer/VBoxContainer/HBoxForce/InputWindForce" to="." method="_on_input_wind_force_text_changed"]
 [connection signal="text_submitted" from="CanvasLayer/VBoxContainer/HBoxForce/InputWindForce" to="." method="_on_input_wind_force_text_submitted"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/UpButton" to="." method="_on_up_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/DownButton" to="." method="_on_down_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/RightButton" to="." method="_on_right_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control3/WindDirectionMenu" to="." method="_on_wind_direction_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control3/WindMenu/ClickChecker" to="." method="_on_click_checker_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control3/WindMenu/ClickChecker" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Back_to_menu_button" to="." method="_on_back_to_menu_button_pressed"]

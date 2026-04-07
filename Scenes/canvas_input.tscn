@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://5jifqwv7ikf2"]
+[gd_scene load_steps=30 format=3 uid="uid://5jifqwv7ikf2"]
 
 [ext_resource type="Script" uid="uid://d4cfm8186jg1e" path="res://Scripts/canvas_input.gd" id="1_v7doh"]
 [ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="2_4g3dx"]
@@ -67,13 +67,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="FontVariation" id="FontVariation_sa17s"]
-base_font = ExtResource("2_4g3dx")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k111n"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gvfgu"]
-
 [sub_resource type="Theme" id="Theme_1065b"]
 default_font = ExtResource("2_4g3dx")
 
@@ -109,8 +102,10 @@ region_rect = Rect2(55, 54, 7, 5)
 texture = ExtResource("9_3a1wi")
 region_rect = Rect2(50, 49, 7, 5)
 
-[node name="CanvasInput" type="CanvasLayer" groups=["hud"]]
+[node name="CanvasInput" type="CanvasLayer" node_paths=PackedStringArray("anm_scroll") groups=["hud"]]
+layer = 2
 script = ExtResource("1_v7doh")
+anm_scroll = NodePath("Control/AnimatedSprite2D")
 
 [node name="Control" type="Control" parent="."]
 texture_filter = 1
@@ -123,9 +118,9 @@ size_flags_horizontal = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control"]
 texture_filter = 1
-position = Vector2(49.3098, 466.555)
+position = Vector2(49.31, 466.555)
 rotation = -1.5708
-scale = Vector2(8.70569, 10.114)
+scale = Vector2(8.70569, 10.5299)
 sprite_frames = SubResource("SpriteFrames_3a1wi")
 frame = 6
 frame_progress = 1.0
@@ -148,40 +143,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_4g3dx")
 theme_override_font_sizes/font_size = 50
 text = "Gravidade"
-
-[node name="bt_Gravity" type="Button" parent="Control2"]
-visible = false
-layout_mode = 0
-offset_left = -113.245
-offset_top = 242.239
-offset_right = 147.755
-offset_bottom = 301.239
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0.745098)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_sa17s")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxEmpty_k111n")
-text = "Gravidade"
-flat = true
-
-[node name="bt_Wind" type="Button" parent="Control2"]
-visible = false
-layout_mode = 0
-offset_left = -106.25
-offset_top = 327.319
-offset_right = 42.7497
-offset_bottom = 386.319
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0.705882)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_sa17s")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxEmpty_gvfgu")
-text = "Vento"
-flat = true
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 texture_filter = 1
@@ -199,18 +161,17 @@ theme = SubResource("Theme_1065b")
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "Força"
+theme_override_font_sizes/font_size = 40
+text = "Aceleração:"
 
 [node name="InputGravity" type="LineEdit" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 37
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3a1wi")
 text = "9.8"
-alignment = 1
 max_length = 4
 flat = true
 
@@ -305,10 +266,10 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_rylup")
 toggle_mode = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 661.598
-offset_top = 387.746
-offset_right = 740.598
-offset_bottom = 482.746
+offset_left = 641.948
+offset_top = 384.525
+offset_right = 791.948
+offset_bottom = 479.525
 theme = SubResource("Theme_sa17s")
 
 [node name="Control" type="Control" parent="VBoxContainer"]
@@ -319,10 +280,11 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "DIREÇÃO:"
+text = "Direção:"
 metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="GravityMenu" type="TextureRect" parent="CanvasLayer"]
 texture_filter = 1

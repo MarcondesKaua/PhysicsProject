@@ -15,13 +15,14 @@ var current_gravity: float = 9.8
 var current_gravity_direction: Vector2 = Vector2.DOWN
 
 @onready var gravity_pointer: TextureRect = $CanvasLayer/GravityMenu
-@onready var anm_scroll: AnimatedSprite2D = $Control/AnimatedSprite2D
+
+@export var anm_scroll: AnimatedSprite2D
+
 
 func _ready() -> void:
 	self.add_to_group("hud")
 	self.input_gravity.text = str(self.current_gravity)
 	self.input_gravity.text_submitted.connect(self._on_input_gravity_text_submitted)
-	
 	self.gravity_pointer.visible = false
 
 
@@ -135,4 +136,5 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action("escape"):
 		self.get_viewport().set_input_as_handled()
+		self.gravity_pointer.visible = false
 		_on_back_to_menu_button_pressed()

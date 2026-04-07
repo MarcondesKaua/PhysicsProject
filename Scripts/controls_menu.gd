@@ -13,6 +13,8 @@ func _ready() -> void:
 	
 	if GameManager.grav_inst:
 		GameManager.grav_inst.menu_closed.connect(self.external_menu_closed)
+	if GameManager.wind_inst:
+		GameManager.wind_inst.menu_closed.connect(self.external_menu_closed)
 		
 
 func _on_button_pressed() -> void:
@@ -44,11 +46,13 @@ func _on_bt_gravity_pressed() -> void:
 
 
 func _on_bt_wind_pressed() -> void:
+	
 	if GameManager.wind_inst != null:
 		await self.animation()
 		GameManager.wind_inst.set_menu_visable(true)
+		
 	print("Vent tambem funciona")
-	
+
 func animation() -> void: 
 	self.control_labels_vars.visible = false
 	self.bt_back_menu.visible = false
@@ -56,6 +60,7 @@ func animation() -> void:
 
 	await self.anm_scroll.animation_finished 
 	self.anm_scroll.visible = false
+	
 func external_menu_closed() -> void:
 	self.anm_player.play_backwards("Fade_in")
 	await self.anm_player.animation_finished

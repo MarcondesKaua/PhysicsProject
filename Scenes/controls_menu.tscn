@@ -2,12 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://5blvrqmkdec5" path="res://assets/Menu/Sprite-0004-2.png" id="1_7yx0y"]
 [ext_resource type="Script" uid="uid://da4081lycj7k7" path="res://Scripts/controls_menu.gd" id="1_ovn7s"]
-[ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="1_v34rh"]
+[ext_resource type="FontFile" uid="uid://bgoj1fdqqb0qd" path="res://assets/Fontes/PixeloidSans.ttf" id="2_yg8s2"]
 [ext_resource type="Texture2D" uid="uid://ca6ol3uaeqlhy" path="res://assets/Menu/levelButtons2.png" id="4_urwwa"]
 [ext_resource type="Texture2D" uid="uid://cbuplpkmvggmd" path="res://assets/Menu/Scroll-large2.png" id="5_2qtxy"]
 
-[sub_resource type="FontVariation" id="FontVariation_ovn7s"]
-base_font = ExtResource("1_v34rh")
+[sub_resource type="Theme" id="Theme_0a55l"]
+default_font = ExtResource("2_yg8s2")
+default_font_size = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v34rh"]
 
@@ -94,8 +95,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="FontVariation" id="FontVariation_2qtxy"]
-base_font = ExtResource("1_v34rh")
+[sub_resource type="Theme" id="Theme_caa00"]
+default_font = ExtResource("2_yg8s2")
+default_font_size = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yg8s2"]
 
@@ -138,7 +140,7 @@ offset_right = -7.0
 offset_bottom = 76.0
 grow_horizontal = 0
 size_flags_vertical = 3
-theme_override_fonts/font = SubResource("FontVariation_ovn7s")
+theme = SubResource("Theme_0a55l")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxEmpty_v34rh")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ovn7s")
@@ -182,12 +184,12 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Control/Control"]
 layout_mode = 0
-offset_left = -80.7196
-offset_top = 123.563
-offset_right = 147.28
-offset_bottom = 192.563
+offset_left = -88.984
+offset_top = 121.309
+offset_right = 161.016
+offset_bottom = 190.309
+theme = SubResource("Theme_caa00")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_v34rh")
 theme_override_font_sizes/font_size = 50
 text = "Variaveis"
 
@@ -197,11 +199,11 @@ offset_left = -113.245
 offset_top = 242.239
 offset_right = 147.755
 offset_bottom = 301.239
+theme = SubResource("Theme_0a55l")
 theme_override_colors/font_hover_color = Color(0, 0, 0, 0.745098)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_2qtxy")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yg8s2")
 text = "Gravidade"
@@ -213,11 +215,11 @@ offset_left = -106.25
 offset_top = 327.319
 offset_right = 42.7497
 offset_bottom = 386.319
+theme = SubResource("Theme_0a55l")
 theme_override_colors/font_hover_color = Color(0, 0, 0, 0.705882)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_2qtxy")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_veo5k")
 text = "Vento"
@@ -229,11 +231,11 @@ offset_left = -104.36
 offset_top = 405.58
 offset_right = 97.64
 offset_bottom = 474.58
+theme = SubResource("Theme_0a55l")
 theme_override_colors/font_hover_color = Color(0, 0, 0, 0.745098)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_v34rh")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0a55l")
 text = "Rastros"
@@ -245,11 +247,11 @@ offset_left = -104.36
 offset_top = 674.0
 offset_right = 44.64
 offset_bottom = 728.0
+theme = SubResource("Theme_0a55l")
 theme_override_colors/font_hover_color = Color(0, 0, 0, 0.745098)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_v34rh")
 theme_override_font_sizes/font_size = 52
 theme_override_styles/focus = SubResource("StyleBoxEmpty_caa00")
 text = "Angulo"
@@ -258,11 +260,11 @@ flat = true
 [node name="angle_Input" type="LineEdit" parent="Control/Control/bt_Angle"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 356.36
+offset_left = 356.0
 offset_top = -537.0
-offset_right = 620.36
+offset_right = 635.0
 offset_bottom = -372.0
-theme_override_fonts/font = ExtResource("1_v34rh")
+theme = SubResource("Theme_0a55l")
 theme_override_font_sizes/font_size = 33
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pd686")
 placeholder_text = "Digite o angulo"

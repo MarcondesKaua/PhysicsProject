@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3bq1mh5wtfv1" path="res://assets/Menu/oi-21.png (2).png" id="2_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://dqfxsafo37ghw" path="res://assets/Menu/oi-1.png (2).png" id="2_n45e2"]
 [ext_resource type="Texture2D" uid="uid://5blvrqmkdec5" path="res://assets/Menu/Sprite-0004-2.png" id="3_n45e2"]
-[ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="4_n45e2"]
+[ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Fontes/Minecraft.ttf" id="4_n45e2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opfnp"]
 texture = ExtResource("2_n45e2")

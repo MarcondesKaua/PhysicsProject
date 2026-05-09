@@ -1,8 +1,8 @@
-[gd_scene load_steps=50 format=3 uid="uid://5jifqwv7ikf2"]
+[gd_scene load_steps=53 format=3 uid="uid://5jifqwv7ikf2"]
 
 [ext_resource type="Script" uid="uid://d4cfm8186jg1e" path="res://Scripts/canvas_input.gd" id="1_v7doh"]
-[ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="2_4g3dx"]
 [ext_resource type="Texture2D" uid="uid://07sadu6ok4a" path="res://assets/Boulders/arrow.png" id="2_om4sa"]
+[ext_resource type="FontFile" uid="uid://bgoj1fdqqb0qd" path="res://assets/Fontes/PixeloidSans.ttf" id="3_bjac2"]
 [ext_resource type="Texture2D" uid="uid://dsvxiijxrldgo" path="res://assets/Menu/pixilart-drawing.png" id="4_ia3cq"]
 [ext_resource type="Texture2D" uid="uid://ppqdred5ka51" path="res://assets/Menu/Rosa dos ventos.png" id="5_vsv4e"]
 [ext_resource type="Texture2D" uid="uid://d34y1iwhqkcwb" path="res://assets/Menu/arrow.png" id="6_3a1wi"]
@@ -78,8 +78,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Theme" id="Theme_1065b"]
-default_font = ExtResource("2_4g3dx")
+[sub_resource type="Theme" id="Theme_yj6fn"]
+default_font = ExtResource("3_bjac2")
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_87qrf"]
+default_font = ExtResource("3_bjac2")
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_1l50w"]
+default_font = ExtResource("3_bjac2")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3a1wi"]
 
@@ -94,8 +102,9 @@ texture = ExtResource("4_ia3cq")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rylup"]
 texture = ExtResource("4_ia3cq")
 
-[sub_resource type="Theme" id="Theme_sa17s"]
-default_font = ExtResource("2_4g3dx")
+[sub_resource type="Theme" id="Theme_xx05f"]
+default_font = ExtResource("3_bjac2")
+default_font_size = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vsv4e"]
 
@@ -112,6 +121,10 @@ region_rect = Rect2(55, 54, 7, 5)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gvfgu"]
 texture = ExtResource("9_3a1wi")
 region_rect = Rect2(50, 49, 7, 5)
+
+[sub_resource type="Theme" id="Theme_lkc5e"]
+default_font = ExtResource("3_bjac2")
+default_font_size = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_87qrf"]
 
@@ -171,12 +184,12 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Control2"]
 layout_mode = 0
-offset_left = -80.7196
-offset_top = 123.563
-offset_right = 147.28
-offset_bottom = 192.563
+offset_left = -99.7064
+offset_top = 119.971
+offset_right = 172.294
+offset_bottom = 188.971
+theme = SubResource("Theme_yj6fn")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_4g3dx")
 theme_override_font_sizes/font_size = 50
 text = "Gravidade"
 horizontal_alignment = 1
@@ -186,18 +199,19 @@ texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -872.206
-offset_top = 250.301
-offset_right = -540.206
-offset_bottom = 317.301
+offset_left = -869.818
+offset_top = 248.091
+offset_right = -504.818
+offset_bottom = 315.091
 grow_horizontal = 0
-theme = SubResource("Theme_1065b")
+theme = SubResource("Theme_87qrf")
 
 [node name="LabelGravity" type="Label" parent="HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
+theme = SubResource("Theme_1l50w")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "Aceleração:"
 metadata/_edit_lock_ = true
 
@@ -308,7 +322,7 @@ offset_left = 641.948
 offset_top = 384.525
 offset_right = 791.948
 offset_bottom = 479.525
-theme = SubResource("Theme_sa17s")
+theme = SubResource("Theme_xx05f")
 
 [node name="Control" type="Control" parent="VBoxContainer"]
 layout_mode = 2
@@ -390,7 +404,7 @@ offset_left = 1134.0
 offset_top = 110.0
 offset_right = 1302.0
 offset_bottom = 183.0
-theme_override_fonts/font = ExtResource("2_4g3dx")
+theme = SubResource("Theme_lkc5e")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/focus = SubResource("StyleBoxEmpty_87qrf")
 theme_override_styles/hover = SubResource("StyleBoxTexture_bjac2")

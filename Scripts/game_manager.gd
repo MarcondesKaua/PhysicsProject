@@ -27,8 +27,17 @@ var vacuum_mode: bool = false
 var trail_history: Array = []
 var trail_amount_limit: int = 0
 
-#func _ready() -> void:
-	#get_tree().change_scene_to_packed(self.menu_scene)
+var actual_level: int = 0
+var level_data: Dictionary = {}
+const MAX_LEVEL : int = 30
+
+
+func _ready() -> void:
+	for i in range(1, MAX_LEVEL + 1):
+		if i == 1:
+			level_data[i] = 1
+		else:
+			level_data[i] = 0
 
 func _go_to_menu()-> void:
 	SceneTransition.change_scene(self.menu_scene)
@@ -162,3 +171,15 @@ func launch_player(start_position: Vector2, launch_impulse: Vector2) -> void:
 	#if not self.camera == null: 
 		#self.camera.targetPlayer(self.player) #Foca na bola de canhão 
 	self.player.apply_central_impulse(launch_impulse)
+
+
+func complete_level(level_num: int) -> void:
+
+	level_data[level_num] = 2
+	var next_level = level_num + 1
+	
+	if next_level <= MAX_LEVEL:
+		if level_data[next_level] == 0:
+			level_data[next_level] = 1
+			
+	print("Progresso atualizado: Nível ", level_num, " concluído!")

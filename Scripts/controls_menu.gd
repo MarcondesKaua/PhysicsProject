@@ -110,7 +110,7 @@ func clean_numeric_input(new_line: LineEdit) -> void:
 	new_line.caret_column = min(cursor_position, text_filtred.length())
 
 func _on_bt_angle_pressed() -> void:
-	self.angle_Input.visible = true
+	self.angle_Input.visible = !self.angle_Input.visible
 
 func _on_angle_input_text_changed(new_text: String) -> void:
 	self.clean_numeric_input(self.angle_Input)

@@ -42,6 +42,7 @@ func target_hitted(body: Node2D) -> void:
 	
 	await self.get_tree().create_timer(0.3).timeout
 	
+	GameManager.complete_level(GameManager.actual_level)
 	GameManager._go_to_level_selection()
 
 	#respawn()

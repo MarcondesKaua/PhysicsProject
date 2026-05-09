@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://gqegh3ea2t4w"]
+[gd_scene load_steps=16 format=3 uid="uid://gqegh3ea2t4w"]
 
 [ext_resource type="Script" uid="uid://dtkskf28kmcdc" path="res://Scripts/trail_menu.gd" id="1_ckkdn"]
 [ext_resource type="Texture2D" uid="uid://cbuplpkmvggmd" path="res://assets/Menu/Scroll-large2.png" id="2_v5hej"]
@@ -65,7 +65,9 @@ animations = [{
 default_font = ExtResource("3_m0kvk")
 default_font_size = 50
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5rdb"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ckkdn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v5hej"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6cet6"]
 
@@ -131,6 +133,7 @@ offset_top = -1.0
 offset_right = 177.0
 offset_bottom = 23.0
 scale = Vector2(2, 2)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckkdn")
 
 [node name="bt_set_trail_amount" type="Button" parent="Control2"]
 layout_mode = 0
@@ -143,9 +146,10 @@ theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
 theme_override_font_sizes/font_size = 45
-theme_override_styles/focus = SubResource("StyleBoxEmpty_g5rdb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v5hej")
 text = "Quantidade
 de rastros"
 flat = true

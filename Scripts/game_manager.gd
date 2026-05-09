@@ -22,6 +22,7 @@ var camera: Camera2D = null
 var wind: Node2D = null
 
 var game_paused: bool = false
+var vacuum_mode: bool = false
 
 var trail_history: Array = []
 var trail_amount_limit: int = 0

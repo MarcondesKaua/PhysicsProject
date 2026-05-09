@@ -181,6 +181,7 @@ func _input(event: InputEvent) -> void:
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	self.active_particle_wind = toggled_on
 	self.wind_particles.visible = toggled_on
+	GameManager.vacuum_mode = not toggled_on
 	
 	if toggled_on:
 		_update_particle_gravity()

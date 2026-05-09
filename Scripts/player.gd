@@ -5,7 +5,7 @@ const DRAG_COEFFICIENT: float = 0.5
 const AIR_DENSITY: float = 0.1
 var canon_ball_area: float = 1.0
 
-var wind_velocity
+#var wind_velocity
 
 const MAX_POINTS = 100.0
 const UPDATE_POINTS_FREQUENCY = 0.08
@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		self.angular_velocity = self.backup_angular
 		self.backup_angular = 0
 	
-	var hud = get_tree().get_nodes_in_group("hud")
+	
 	
 	if GameManager.grav_inst != null:
 		var gravity_acc = GameManager.grav_inst.current_gravity
@@ -46,18 +46,21 @@ func _physics_process(delta: float) -> void:
 		resultant_force += gravity_force
 	#CALCULAR TUDO E PASSAR SÓ UMA VEZ^
 	
-	var wind = get_tree().get_nodes_in_group("wind")
-
-	if GameManager.wind_inst != null:
-		self.wind_velocity = GameManager.wind_inst.getWindVector()
 	
-	var relative_speed = self.linear_velocity - self.wind_velocity
-	var magnitude_relative_speed = relative_speed.length()
-	var drag_direction = -relative_speed.normalized()
-	var magnitude_drag_force = (magnitude_relative_speed * magnitude_relative_speed * DRAG_COEFFICIENT * AIR_DENSITY * self.canon_ball_area) * 0.5
-	var drag_force: Vector2 = drag_direction * magnitude_drag_force
-	#magnitude over module
-	resultant_force += drag_force
+	if not GameManager.vacuum_mode:
+		if GameManager.wind_inst != null:
+			var wind_vel = GameManager.wind_inst.getWindVector()
+			var relative_speed = self.linear_velocity - wind_vel
+			var drag = -relative_speed.normalized() * (relative_speed.length_squared() * DRAG_COEFFICIENT * AIR_DENSITY * self.canon_ball_area) * 0.5
+			resultant_force += drag
+	
+	#var relative_speed = self.linear_velocity - self.wind_velocity
+	#var magnitude_relative_speed = relative_speed.length()
+	#var drag_direction = -relative_speed.normalized()
+	#var magnitude_drag_force = (magnitude_relative_speed * magnitude_relative_speed * DRAG_COEFFICIENT * AIR_DENSITY * self.canon_ball_area) * 0.5
+	#var drag_force: Vector2 = drag_direction * magnitude_drag_force
+	##magnitude over module
+	#resultant_force += drag_force
 
 	#isso aqui ta fazendo um fenomeno legal self.apply_central_force(dragForce * dragDirection)
 	self.apply_central_force(resultant_force)

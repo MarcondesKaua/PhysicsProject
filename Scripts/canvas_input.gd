@@ -9,7 +9,8 @@ signal gravity_direction_changed(new_gravity_direction: Vector2)
 @onready var gravity_bt: Button = $GravityButtonDirection
 @onready var vbox: VBoxContainer = $VBoxContainer
 @onready var control_label: Control = $Control2
-
+@onready var planets_conteiner: HBoxContainer = $H_Planets_conteiner
+@onready var planets_bt: Button = $Planets_bt
 @onready var input_gravity = $HBoxContainer/InputGravity
 var current_gravity: float = 9.8
 var current_gravity_direction: Vector2 = Vector2.DOWN
@@ -24,6 +25,7 @@ func _ready() -> void:
 	self.input_gravity.text = str(self.current_gravity)
 	self.input_gravity.text_submitted.connect(self._on_input_gravity_text_submitted)
 	self.gravity_pointer.visible = false
+	self.planets_conteiner.visible = false
 
 
 func _on_input_gravity_text_submitted(new_text: String) -> void:
@@ -110,7 +112,8 @@ func set_menu_visable(is_visible: bool) -> void:
 		self.vbox.visible = false
 		self.gravity_bt.visible = false 
 		self.control_label.visible = false
-		
+		self.planets_conteiner.visible = false
+		self.planets_bt.visible = false
 		self.anm_scroll.play("default")
 		await self.anm_scroll.animation_finished
 		
@@ -118,17 +121,18 @@ func set_menu_visable(is_visible: bool) -> void:
 		self.vbox.visible = true
 		self.gravity_bt.visible = true 
 		self.control_label.visible = true
-
+		self.planets_bt.visible = true
 func _on_back_to_menu_button_pressed() -> void:
 	self.hbox.visible = false
 	self.vbox.visible = false
 	self.gravity_bt.visible = false 
 	self.control_label.visible = false
-	
+	self.planets_conteiner.visible = false
+	self.planets_bt.visible = false
 	self.anm_scroll.play_backwards("default")
 	await self.anm_scroll.animation_finished
 	self.set_menu_visable(false)
-	
+	print("Menu com problema? ")
 	self.menu_closed.emit()
 	
 func _input(event: InputEvent) -> void:
@@ -138,3 +142,48 @@ func _input(event: InputEvent) -> void:
 		self.get_viewport().set_input_as_handled()
 		self.gravity_pointer.visible = false
 		_on_back_to_menu_button_pressed()
+
+
+func _on_planets_bt_pressed() -> void:
+	self.planets_conteiner.visible = !self.planets_conteiner.visible
+
+
+func _on_moon_bt_pressed() -> void:
+	self.current_gravity = 1.16
+	self.input_gravity.text = str(self.current_gravity)
+
+func _on_sun_bt_pressed() -> void:
+	self.current_gravity = 274
+	self.input_gravity.text = str(self.current_gravity)
+
+func _on_mercury_bt_pressed() -> void:
+	self.current_gravity = 3.7
+	self.input_gravity.text = str(self.current_gravity)
+
+func _on_venus_bt_pressed() -> void:
+	self.current_gravity = 8.87
+	self.input_gravity.text = str(self.current_gravity)
+
+func _on_earth_bt_pressed() -> void:
+	self.current_gravity = 9.8
+	self.input_gravity.text = str(self.current_gravity)
+
+func _on_mars_bt_pressed() -> void:
+	self.current_gravity = 3.71
+	self.input_gravity.text = str(self.current_gravity)
+
+func _on_jupiter_bt_pressed() -> void:
+	self.current_gravity = 24.79
+	self.input_gravity.text = str(self.current_gravity)
+
+func _on_saturn_bt_pressed() -> void:
+	self.current_gravity = 10.44
+	self.input_gravity.text = str(self.current_gravity)
+
+func _on_uranus_bt_pressed() -> void:
+	self.current_gravity = 8.69
+	self.input_gravity.text = str(self.current_gravity)
+
+func _on_neptune_bt_pressed() -> void:
+	self.current_gravity = 11.15
+	self.input_gravity.text = str(self.current_gravity)

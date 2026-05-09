@@ -17,8 +17,8 @@ var backup_angular = 0
 
 func _ready() -> void:
 	self.mass = 1.0 
-
-
+	
+	
 func _physics_process(delta: float) -> void:
 	var resultant_force: Vector2 = Vector2.ZERO
 	if GameManager.game_paused:
@@ -36,20 +36,20 @@ func _physics_process(delta: float) -> void:
 		self.backup_angular = 0
 	
 	var hud = get_tree().get_nodes_in_group("hud")
-	#REVISAR FORs
-	for hud_indx in hud:
-		if hud_indx is CanvasInput:
-			var gravity_acc = hud_indx.current_gravity
-			var gravity_direction = hud_indx.current_gravity_direction
-			
-			var gravity_force = (gravity_acc * self.mass * gravity_direction) #mudar nome, força graviadade, fisica correta
-			resultant_force += gravity_force
+	
+	if GameManager.grav_inst != null:
+		var gravity_acc = GameManager.grav_inst.current_gravity
+		var gravity_direction= GameManager.grav_inst.current_gravity_direction
+		#var gravity_acc = hud_indx.current_gravity
+		#var gravity_direction = hud_indx.current_gravity_direction
+		var gravity_force = (gravity_acc * self.mass * gravity_direction) #mudar nome, força graviadade, fisica correta
+		resultant_force += gravity_force
 	#CALCULAR TUDO E PASSAR SÓ UMA VEZ^
 	
 	var wind = get_tree().get_nodes_in_group("wind")
-	for wind_indx in wind:
-		if wind_indx.has_method("getWindVector"):
-			self.wind_velocity = wind_indx.getWindVector()
+
+	if GameManager.wind_inst != null:
+		self.wind_velocity = GameManager.wind_inst.getWindVector()
 	
 	var relative_speed = self.linear_velocity - self.wind_velocity
 	var magnitude_relative_speed = relative_speed.length()

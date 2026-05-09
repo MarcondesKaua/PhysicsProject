@@ -7,23 +7,27 @@ signal wind_changed(new_wind_speed: float)
 @export var anm_scroll: AnimatedSprite2D
 
 @onready var back_to_menu_bt: Button = $CanvasLayer/Back_to_menu_button
-@onready var input_wind: LineEdit = %InputWindForce
+@onready var input_wind_speed_magnitude: LineEdit = %InputWindForce
+@onready var input_wind_angle: LineEdit = $CanvasLayer/ControlDirections/WindMenu/AngleInput
 @onready var wind_particles: GPUParticles2D = $WindParticles
-@onready var wind_material: ParticleProcessMaterial = $WindParticles.process_material
+@onready var wind_particle_material: ParticleProcessMaterial = $WindParticles.process_material
 @onready var wind_container: VBoxContainer = $CanvasLayer/VBoxContainer
-
-@onready var wind_pointer_menu = $CanvasLayer/Control3/WindMenu
-@onready var control_label = $CanvasLayer/Control2
-@onready var control_dir = $CanvasLayer/Control3
+@onready var wind_pointer_menu = $CanvasLayer/ControlDirections/WindMenu
+@onready var control_label = $CanvasLayer/ControlTitleMenu
+@onready var control_dir = $CanvasLayer/ControlDirections
+@onready var control_active_wind_lab = $CanvasLayer/ControlCheckWind
+@onready var canvas = $CanvasLayer
 
 var wind_speed_magnitude: float = 5.0
 var wind_direction_unit_vector: Vector2 = Vector2.RIGHT
 
+var active_particle_wind: bool = false
+
 func _ready() -> void:
 	add_to_group("wind")
 	
-	self.input_wind.text = str(wind_speed_magnitude)
-	self.wind_particles.visible = true 
+	self.input_wind_speed_magnitude.text = str(wind_speed_magnitude)
+	self.wind_particles.visible = self.active_particle_wind 
 	self.set_menu_visable(false) 
 
 func _on_input_wind_force_text_submitted(new_text: String) -> void:
@@ -31,6 +35,8 @@ func _on_input_wind_force_text_submitted(new_text: String) -> void:
 	
 	if clean_float_input > 0:
 		self.wind_speed_magnitude = clean_float_input
+		_activate_wind_system()
+		_update_particle_gravity()
 		wind_changed.emit(self.wind_speed_magnitude)
 		print("Novo vento ", self.wind_speed_magnitude)
 	elif clean_float_input == 0:
@@ -54,8 +60,12 @@ func clean_numeric_input(line_edit: LineEdit) -> void:
 	line_edit.caret_column = min(cursor_position, text_filtered.length())
 
 func _on_input_wind_force_text_changed(new_text: String) -> void:
-	clean_numeric_input(self.input_wind)
-
+	clean_numeric_input(self.input_wind_speed_magnitude)
+	
+	
+func _on_angle_input_text_changed(new_text: String) -> void:
+	clean_numeric_input(self.input_wind_angle)
+	
 func set_wind_direction(direction: Vector2) -> void:
 	self.wind_direction_unit_vector = direction.normalized()
 
@@ -65,58 +75,64 @@ func getWindVector() -> Vector2:
 
 func _on_up_button_pressed() -> void:
 	set_wind_direction(Vector2.UP)
-	self.wind_material.gravity = Vector3(0, -10, 0)
+	self.wind_particle_material.gravity = Vector3(0, -10, 0)
 
 func _on_down_button_pressed() -> void:
 	set_wind_direction(Vector2.DOWN)
-	self.wind_material.gravity = Vector3(0, 10, 0)
+	self.wind_particle_material.gravity = Vector3(0, 10, 0)
 
 func _on_right_button_pressed() -> void:
 	set_wind_direction(Vector2.RIGHT)
-	self.wind_material.gravity = Vector3(10, 0, 0)
+	self.wind_particle_material.gravity = Vector3(10, 0, 0)
 
 func _on_left_button_pressed() -> void:
 	set_wind_direction(Vector2.LEFT)
-	self.wind_material.gravity = Vector3(-10, 0, 0)
+	self.wind_particle_material.gravity = Vector3(-10, 0, 0)
 
 func _on_wind_direction_menu_pressed() -> void:
 	self.wind_pointer_menu.visible = !self.wind_pointer_menu.visible
+	self.control_active_wind_lab.visible = false
 	
 func _on_click_checker_pressed() -> void:
-	var windRose = $CanvasLayer/Control3/WindMenu/WindRose
-	var windArrow = $CanvasLayer/Control3/WindMenu/WindRose/WindPointer
+	self.control_active_wind_lab.visible = true
+	var windRose = $CanvasLayer/ControlDirections/WindMenu/WindRose
+	var windArrow = $CanvasLayer/ControlDirections/WindMenu/WindRose/WindPointer
 	
 	# posição do mouse em relação ao canto superior esquerdo da Rosa
-	var rawMousePosition = windRose.get_local_mouse_position()
+	var raw_mouse_position = windRose.get_local_mouse_position()
 	
 	# metade do tamanho da Rosa para que o (0,0) seja o centro
 	# Isso corrige o erro de clicar no Norte e ir para a direita
-	var windRoseCenter = windRose.size / 2
-	var correctedDirection = rawMousePosition - windRoseCenter
+	var wind_rose_center = windRose.size / 2
+	var corrected_wind_direction = raw_mouse_position - wind_rose_center
 	
 	#vetor de direção pura
-	var applicableDirection = correctedDirection.normalized()
-	set_wind_direction(applicableDirection)
+	var wind_direction_unit_vector = corrected_wind_direction.normalized()
+	set_wind_direction(wind_direction_unit_vector)
 	
 	# offset está na base, vai girar em torno do centro da Rosa
-	windArrow.rotation = applicableDirection.angle()
+	windArrow.rotation = wind_direction_unit_vector.angle()
+	_activate_wind_system()
+	_update_particle_gravity()
 	
-	self.wind_material.gravity = Vector3(applicableDirection.x * self.wind_speed_magnitude * 10, applicableDirection.y * self.wind_speed_magnitude * 10, 0)
 	
 	self.wind_pointer_menu.visible = false
 	
-	print("Vento setado para: ", applicableDirection, " com força: ", self.wind_speed_magnitude)
+
+	
+	print("Vento setado para: ", wind_direction_unit_vector, " com força: ", self.wind_speed_magnitude)
 	
 	# set_menu_visable(false) # Removido para não fechar o menu inteiro ao clicar na rosa
 
 func set_menu_visable(is_visible: bool) -> void:
-	self.visible = is_visible
+	self.canvas.visible = is_visible
 	
 	if is_visible:
 
 		self.wind_container.visible = false
 		self.control_label.visible = false
 		self.control_dir.visible = false 
+		self.control_active_wind_lab.visible = false
 		self.back_to_menu_bt.visible = false
 		
 		self.anm_scroll.visible = true
@@ -127,12 +143,14 @@ func set_menu_visable(is_visible: bool) -> void:
 		self.wind_container.visible = true
 		self.control_label.visible = true
 		self.control_dir.visible = true 
+		self.control_active_wind_lab.visible = true
 		self.back_to_menu_bt.visible = true
 	else:
 
 		self.wind_container.visible = false
 		self.control_label.visible = false
 		self.control_dir.visible = false
+		self.control_active_wind_lab.visible = false
 		self.back_to_menu_bt.visible = false
 		self.anm_scroll.visible = false
 		self.wind_pointer_menu.visible = false
@@ -142,6 +160,7 @@ func _on_back_to_menu_button_pressed() -> void:
 	self.wind_container.visible = false
 	self.control_label.visible = false
 	self.control_dir.visible = false
+	self.control_active_wind_lab.visible= false
 	self.back_to_menu_bt.visible = false
 	
 	self.anm_scroll.play_backwards("default")
@@ -151,9 +170,37 @@ func _on_back_to_menu_button_pressed() -> void:
 	self.menu_closed.emit()
 
 func _input(event: InputEvent) -> void:
-	if not self.visible:
+	if not self.canvas.visible:
 		return
 	if event.is_action_pressed("escape"):
 		self.get_viewport().set_input_as_handled()
 		self.control_dir.visible = false
 		_on_back_to_menu_button_pressed()
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	self.active_particle_wind = toggled_on
+	self.wind_particles.visible = toggled_on
+	
+	if toggled_on:
+		_update_particle_gravity()
+	else:
+		self.wind_particle_material.gravity = Vector3.ZERO
+		set_wind_direction(Vector2.ZERO)
+
+
+func _activate_wind_system() -> void:
+	if not active_particle_wind:
+		active_particle_wind = true
+		
+		$CanvasLayer/ControlCheckWind/CheckButton.button_pressed = true 
+		self.wind_particles.visible = true
+		_update_particle_gravity() 
+		
+func _update_particle_gravity() -> void:
+	if active_particle_wind:
+		self.wind_particle_material.gravity = Vector3(
+			self.wind_direction_unit_vector.x * self.wind_speed_magnitude * 10, 
+			self.wind_direction_unit_vector.y * self.wind_speed_magnitude * 10, 
+			0
+		)

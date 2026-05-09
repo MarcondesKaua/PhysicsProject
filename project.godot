@@ -8,9 +8,13 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
-config/name="ProjetoOficial_Copia"
+config/name="ProjetoOficialGitOne"
 run/main_scene="uid://dlx08cefx4ewa"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
@@ -61,3 +65,5 @@ escape={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method.mobile="forward_plus"
+renderer/rendering_method.web="forward_plus"

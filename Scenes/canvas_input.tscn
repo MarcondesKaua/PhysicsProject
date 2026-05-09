@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://5jifqwv7ikf2"]
+[gd_scene load_steps=50 format=3 uid="uid://5jifqwv7ikf2"]
 
 [ext_resource type="Script" uid="uid://d4cfm8186jg1e" path="res://Scripts/canvas_input.gd" id="1_v7doh"]
 [ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="2_4g3dx"]
@@ -9,6 +9,17 @@
 [ext_resource type="Script" uid="uid://bbbo26msemuh4" path="res://Scenes/wind_pointer.gd" id="7_rylup"]
 [ext_resource type="Texture2D" uid="uid://cbuplpkmvggmd" path="res://assets/Menu/Scroll-large2.png" id="8_vsv4e"]
 [ext_resource type="Texture2D" uid="uid://ca6ol3uaeqlhy" path="res://assets/Menu/levelButtons2.png" id="9_3a1wi"]
+[ext_resource type="Texture2D" uid="uid://deohraa6wy3c2" path="res://assets/SolarSystem/pixellab-Moon-1778103260098.png" id="10_7toc5"]
+[ext_resource type="Texture2D" uid="uid://5blvrqmkdec5" path="res://assets/Menu/Sprite-0004-2.png" id="10_bjac2"]
+[ext_resource type="Texture2D" uid="uid://bcqxv7xxns11a" path="res://assets/SolarSystem/pixellab-The-sun--1778101868608.png" id="11_bjac2"]
+[ext_resource type="Texture2D" uid="uid://jkhe7snm2608" path="res://assets/SolarSystem/pixellab-Mercury-1778101906235.png" id="12_yj6fn"]
+[ext_resource type="Texture2D" uid="uid://b1s3umfij63wg" path="res://assets/SolarSystem/pixellab-Venus-1778102048078.png" id="13_87qrf"]
+[ext_resource type="Texture2D" uid="uid://djxocjflgual" path="res://assets/SolarSystem/pixellab-Earth-1778102205757.png" id="14_1l50w"]
+[ext_resource type="Texture2D" uid="uid://tbocl6p1smep" path="res://assets/SolarSystem/pixellab-Mars-1778102250122.png" id="15_xx05f"]
+[ext_resource type="Texture2D" uid="uid://8b8bti65mii" path="res://assets/SolarSystem/pixellab-Jupiter-1778102320593.png" id="16_lkc5e"]
+[ext_resource type="Texture2D" uid="uid://mivp20bxcvoh" path="res://assets/SolarSystem/pixellab-Saturn-1778102386207.png" id="17_omwsy"]
+[ext_resource type="Texture2D" uid="uid://mcp6wuigwbft" path="res://assets/SolarSystem/pixellab-Uranus-1778102454152.png" id="18_18152"]
+[ext_resource type="Texture2D" uid="uid://7i1iihh4m7od" path="res://assets/SolarSystem/pixellab-Neptune-1778102504826.png" id="19_f63rh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0nkq"]
 atlas = ExtResource("8_vsv4e")
@@ -102,6 +113,31 @@ region_rect = Rect2(55, 54, 7, 5)
 texture = ExtResource("9_3a1wi")
 region_rect = Rect2(50, 49, 7, 5)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_87qrf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bjac2"]
+texture = ExtResource("10_bjac2")
+region_rect = Rect2(54, 502, 336, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yj6fn"]
+texture = ExtResource("10_bjac2")
+region_rect = Rect2(54, 302, 336, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1l50w"]
+texture = ExtResource("10_bjac2")
+region_rect = Rect2(54, 92, 336, 160)
+
+[sub_resource type="Theme" id="Theme_7toc5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yj6fn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7toc5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7toc5"]
+modulate_color = Color(0.169245, 0.169245, 0.169245, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjac2"]
+
 [node name="CanvasInput" type="CanvasLayer" node_paths=PackedStringArray("anm_scroll") groups=["hud"]]
 layer = 2
 script = ExtResource("1_v7doh")
@@ -120,7 +156,7 @@ size_flags_horizontal = 4
 texture_filter = 1
 position = Vector2(49.31, 466.555)
 rotation = -1.5708
-scale = Vector2(8.70569, 10.5299)
+scale = Vector2(8.706, 10.984)
 sprite_frames = SubResource("SpriteFrames_3a1wi")
 frame = 6
 frame_progress = 1.0
@@ -150,10 +186,10 @@ texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -834.686
-offset_top = 249.091
-offset_right = -525.686
-offset_bottom = 316.091
+offset_left = -872.206
+offset_top = 250.301
+offset_right = -540.206
+offset_bottom = 317.301
 grow_horizontal = 0
 theme = SubResource("Theme_1065b")
 
@@ -163,6 +199,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Aceleração:"
+metadata/_edit_lock_ = true
 
 [node name="InputGravity" type="LineEdit" parent="HBoxContainer"]
 layout_mode = 2
@@ -174,6 +211,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3a1wi")
 text = "9.8"
 max_length = 4
 flat = true
+metadata/_edit_lock_ = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer"]
 visible = false
@@ -347,6 +385,166 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_sa17s")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_k111n")
 theme_override_styles/normal = SubResource("StyleBoxTexture_gvfgu")
 
+[node name="Planets_bt" type="Button" parent="."]
+offset_left = 1134.0
+offset_top = 110.0
+offset_right = 1302.0
+offset_bottom = 183.0
+theme_override_fonts/font = ExtResource("2_4g3dx")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxEmpty_87qrf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bjac2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yj6fn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1l50w")
+text = "Astros"
+
+[node name="H_Planets_conteiner" type="HBoxContainer" parent="."]
+offset_left = 1139.0
+offset_top = 202.0
+offset_right = 1490.0
+offset_bottom = 546.0
+
+[node name="V_Planets_conteiner" type="VBoxContainer" parent="H_Planets_conteiner"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme = SubResource("Theme_7toc5")
+
+[node name="Moon_bt" type="Button" parent="H_Planets_conteiner/V_Planets_conteiner"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yj6fn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7toc5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7toc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bjac2")
+icon = ExtResource("10_7toc5")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Sun_bt" type="Button" parent="H_Planets_conteiner/V_Planets_conteiner"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yj6fn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7toc5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7toc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bjac2")
+icon = ExtResource("11_bjac2")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Mercury_bt" type="Button" parent="H_Planets_conteiner/V_Planets_conteiner"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yj6fn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7toc5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7toc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bjac2")
+icon = ExtResource("12_yj6fn")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Venus_bt" type="Button" parent="H_Planets_conteiner/V_Planets_conteiner"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yj6fn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7toc5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7toc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bjac2")
+icon = ExtResource("13_87qrf")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Earth_bt" type="Button" parent="H_Planets_conteiner/V_Planets_conteiner"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yj6fn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7toc5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7toc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bjac2")
+icon = ExtResource("14_1l50w")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="V_Planets_conteiner_2" type="VBoxContainer" parent="H_Planets_conteiner"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Mars_bt" type="Button" parent="H_Planets_conteiner/V_Planets_conteiner_2"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yj6fn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7toc5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7toc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bjac2")
+icon = ExtResource("15_xx05f")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Jupiter_bt" type="Button" parent="H_Planets_conteiner/V_Planets_conteiner_2"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yj6fn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7toc5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7toc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bjac2")
+icon = ExtResource("16_lkc5e")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Saturn_bt" type="Button" parent="H_Planets_conteiner/V_Planets_conteiner_2"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yj6fn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7toc5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7toc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bjac2")
+icon = ExtResource("17_omwsy")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Uranus_bt" type="Button" parent="H_Planets_conteiner/V_Planets_conteiner_2"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yj6fn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7toc5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7toc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bjac2")
+icon = ExtResource("18_18152")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Neptune_bt" type="Button" parent="H_Planets_conteiner/V_Planets_conteiner_2"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yj6fn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7toc5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7toc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bjac2")
+icon = ExtResource("19_f63rh")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="text_changed" from="HBoxContainer/InputGravity" to="." method="_on_input_gravity_text_changed"]
 [connection signal="text_submitted" from="HBoxContainer/InputGravity" to="." method="_on_input_gravity_text_submitted"]
 [connection signal="pressed" from="HBoxContainer/HBoxContainer2/UpButton" to="." method="_on_up_button_pressed"]
@@ -356,3 +554,14 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_gvfgu")
 [connection signal="toggled" from="GravityButtonDirection" to="." method="_on_gravity_button_direction_toggled"]
 [connection signal="pressed" from="CanvasLayer/GravityMenu/ClickChecker" to="." method="_on_click_checker_pressed"]
 [connection signal="pressed" from="Back_to_menu_button" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="Planets_bt" to="." method="_on_planets_bt_pressed"]
+[connection signal="pressed" from="H_Planets_conteiner/V_Planets_conteiner/Moon_bt" to="." method="_on_moon_bt_pressed"]
+[connection signal="pressed" from="H_Planets_conteiner/V_Planets_conteiner/Sun_bt" to="." method="_on_sun_bt_pressed"]
+[connection signal="pressed" from="H_Planets_conteiner/V_Planets_conteiner/Mercury_bt" to="." method="_on_mercury_bt_pressed"]
+[connection signal="pressed" from="H_Planets_conteiner/V_Planets_conteiner/Venus_bt" to="." method="_on_venus_bt_pressed"]
+[connection signal="pressed" from="H_Planets_conteiner/V_Planets_conteiner/Earth_bt" to="." method="_on_earth_bt_pressed"]
+[connection signal="pressed" from="H_Planets_conteiner/V_Planets_conteiner_2/Mars_bt" to="." method="_on_mars_bt_pressed"]
+[connection signal="pressed" from="H_Planets_conteiner/V_Planets_conteiner_2/Jupiter_bt" to="." method="_on_jupiter_bt_pressed"]
+[connection signal="pressed" from="H_Planets_conteiner/V_Planets_conteiner_2/Saturn_bt" to="." method="_on_saturn_bt_pressed"]
+[connection signal="pressed" from="H_Planets_conteiner/V_Planets_conteiner_2/Uranus_bt" to="." method="_on_uranus_bt_pressed"]
+[connection signal="pressed" from="H_Planets_conteiner/V_Planets_conteiner_2/Neptune_bt" to="." method="_on_neptune_bt_pressed"]

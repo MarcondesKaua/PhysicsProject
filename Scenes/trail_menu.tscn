@@ -1,0 +1,181 @@
+[gd_scene load_steps=15 format=3 uid="uid://gqegh3ea2t4w"]
+
+[ext_resource type="Script" uid="uid://dtkskf28kmcdc" path="res://Scripts/trail_menu.gd" id="1_ckkdn"]
+[ext_resource type="Texture2D" uid="uid://cbuplpkmvggmd" path="res://assets/Menu/Scroll-large2.png" id="2_v5hej"]
+[ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="3_m0kvk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0nkq"]
+atlas = ExtResource("2_v5hej")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b038a"]
+atlas = ExtResource("2_v5hej")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veo5k"]
+atlas = ExtResource("2_v5hej")
+region = Rect2(192, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kucdi"]
+atlas = ExtResource("2_v5hej")
+region = Rect2(288, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hynx4"]
+atlas = ExtResource("2_v5hej")
+region = Rect2(384, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g4ts"]
+atlas = ExtResource("2_v5hej")
+region = Rect2(480, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sil2f"]
+atlas = ExtResource("2_v5hej")
+region = Rect2(576, 0, 96, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xjwn0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0nkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b038a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veo5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kucdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hynx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g4ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sil2f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Theme" id="Theme_h8lcv"]
+default_font = ExtResource("3_m0kvk")
+default_font_size = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5rdb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6cet6"]
+
+[node name="Trail_Menu" type="CanvasLayer" node_paths=PackedStringArray("animated_scroll")]
+script = ExtResource("1_ckkdn")
+animated_scroll = NodePath("Control/scroll_anm")
+
+[node name="Control" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="scroll_anm" type="AnimatedSprite2D" parent="Control"]
+texture_filter = 1
+position = Vector2(49.31, 466.555)
+rotation = -1.5708
+scale = Vector2(8.706, 10.984)
+sprite_frames = SubResource("SpriteFrames_xjwn0")
+frame = 6
+frame_progress = 1.0
+speed_scale = 2.5
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="title" type="Label" parent="Control2"]
+layout_mode = 0
+offset_left = -35.0
+offset_top = 124.0
+offset_right = 134.0
+offset_bottom = 193.0
+theme = SubResource("Theme_h8lcv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_m0kvk")
+theme_override_font_sizes/font_size = 50
+text = "Rastro"
+
+[node name="status" type="Label" parent="Control2"]
+layout_mode = 0
+offset_left = -67.0
+offset_top = 248.0
+offset_right = 83.0
+offset_bottom = 299.0
+theme = SubResource("Theme_h8lcv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ativo: "
+
+[node name="check_status" type="CheckButton" parent="Control2/status"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = -1.0
+offset_right = 177.0
+offset_bottom = 23.0
+scale = Vector2(2, 2)
+
+[node name="bt_set_trail_amount" type="Button" parent="Control2"]
+layout_mode = 0
+offset_left = -100.0
+offset_top = 410.0
+offset_right = 183.0
+offset_bottom = 520.0
+theme = SubResource("Theme_h8lcv")
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g5rdb")
+text = "Quantidade
+de rastros"
+flat = true
+
+[node name="input_trail" type="LineEdit" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 215.0
+offset_top = -302.0
+offset_right = 603.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_m0kvk")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6cet6")
+placeholder_text = "Quantidade de rastro"
+alignment = 1
+max_length = 4
+
+[node name="back_to_menu_button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="toggled" from="Control2/status/check_status" to="." method="_on_check_status_toggled"]
+[connection signal="pressed" from="Control2/bt_set_trail_amount" to="." method="_on_bt_set_trail_amount_pressed"]
+[connection signal="text_changed" from="input_trail" to="." method="_on_input_trail_text_changed"]
+[connection signal="text_submitted" from="input_trail" to="." method="_on_input_trail_text_submitted"]
+[connection signal="pressed" from="back_to_menu_button" to="." method="_on_back_to_menu_button_pressed"]

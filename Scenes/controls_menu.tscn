@@ -1,48 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://c53j36kahx80a"]
+[gd_scene load_steps=29 format=3 uid="uid://c53j36kahx80a"]
 
 [ext_resource type="Texture2D" uid="uid://5blvrqmkdec5" path="res://assets/Menu/Sprite-0004-2.png" id="1_7yx0y"]
 [ext_resource type="Script" uid="uid://da4081lycj7k7" path="res://Scripts/controls_menu.gd" id="1_ovn7s"]
 [ext_resource type="FontFile" uid="uid://cjfuvxx6nf8nt" path="res://assets/Menu/Minecraft.ttf" id="1_v34rh"]
 [ext_resource type="Texture2D" uid="uid://ca6ol3uaeqlhy" path="res://assets/Menu/levelButtons2.png" id="4_urwwa"]
 [ext_resource type="Texture2D" uid="uid://cbuplpkmvggmd" path="res://assets/Menu/Scroll-large2.png" id="5_2qtxy"]
-
-[sub_resource type="Animation" id="Animation_2qtxy"]
-resource_name = "Fade_in"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Back_Menu_Color:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.433333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.627451)]
-}
-
-[sub_resource type="Animation" id="Animation_urwwa"]
-resource_name = "RESET"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Back_Menu_Color:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0nkq"]
-_data = {
-&"Fade_in": SubResource("Animation_2qtxy"),
-&"RESET": SubResource("Animation_urwwa")
-}
 
 [sub_resource type="FontVariation" id="FontVariation_ovn7s"]
 base_font = ExtResource("1_v34rh")
@@ -132,14 +94,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0nkq"]
-
 [sub_resource type="FontVariation" id="FontVariation_2qtxy"]
 base_font = ExtResource("1_v34rh")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yg8s2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_veo5k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0a55l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_caa00"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pd686"]
 
 [node name="Controls_Menu" type="CanvasLayer" node_paths=PackedStringArray("anm_player", "anm_scroll")]
 script = ExtResource("1_ovn7s")
@@ -160,9 +126,6 @@ mouse_filter = 2
 color = Color(0.19, 0.19, 0.19, 1)
 
 [node name="Menu_Transition" type="AnimationPlayer" parent="Back_Menu"]
-libraries = {
-&"": SubResource("AnimationLibrary_y0nkq")
-}
 
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
@@ -206,7 +169,7 @@ size_flags_horizontal = 4
 texture_filter = 1
 position = Vector2(49.3098, 466.555)
 rotation = -1.5708
-scale = Vector2(8.706, 10.53)
+scale = Vector2(8.706, 10.984)
 sprite_frames = SubResource("SpriteFrames_ftodl")
 frame = 6
 frame_progress = 1.0
@@ -227,27 +190,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_v34rh")
 theme_override_font_sizes/font_size = 50
 text = "Variaveis"
-
-[node name="Label2" type="Label" parent="Control/Control"]
-layout_mode = 0
-offset_left = -92.8199
-offset_top = 674.436
-offset_right = 76.1801
-offset_bottom = 743.436
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_v34rh")
-theme_override_font_sizes/font_size = 50
-text = "Rastro"
-
-[node name="CheckButton" type="CheckButton" parent="Control/Control/Label2"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 169.156
-offset_top = 4.18066
-offset_right = 213.156
-offset_bottom = 28.1807
-scale = Vector2(2, 2)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y0nkq")
 
 [node name="bt_Gravity" type="Button" parent="Control/Control"]
 layout_mode = 0
@@ -281,7 +223,57 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_veo5k")
 text = "Vento"
 flat = true
 
+[node name="bt_Trail" type="Button" parent="Control/Control"]
+layout_mode = 0
+offset_left = -104.36
+offset_top = 405.58
+offset_right = 97.64
+offset_bottom = 474.58
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.745098)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_v34rh")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0a55l")
+text = "Rastros"
+flat = true
+
+[node name="bt_Angle" type="Button" parent="Control/Control"]
+layout_mode = 0
+offset_left = -104.36
+offset_top = 674.0
+offset_right = 44.64
+offset_bottom = 728.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.745098)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_v34rh")
+theme_override_font_sizes/font_size = 52
+theme_override_styles/focus = SubResource("StyleBoxEmpty_caa00")
+text = "Angulo"
+flat = true
+
+[node name="angle_Input" type="LineEdit" parent="Control/Control/bt_Angle"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 356.36
+offset_top = -537.0
+offset_right = 620.36
+offset_bottom = -372.0
+theme_override_fonts/font = ExtResource("1_v34rh")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pd686")
+placeholder_text = "Digite o angulo"
+alignment = 1
+max_length = 4
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Back_to_menu_button" to="." method="_on_back_to_menu_button_pressed"]
 [connection signal="pressed" from="Control/Control/bt_Gravity" to="." method="_on_bt_gravity_pressed"]
 [connection signal="pressed" from="Control/Control/bt_Wind" to="." method="_on_bt_wind_pressed"]
+[connection signal="pressed" from="Control/Control/bt_Trail" to="." method="_on_bt_trail_pressed"]
+[connection signal="pressed" from="Control/Control/bt_Angle" to="." method="_on_bt_angle_pressed"]
+[connection signal="text_changed" from="Control/Control/bt_Angle/angle_Input" to="." method="_on_angle_input_text_changed"]
+[connection signal="text_submitted" from="Control/Control/bt_Angle/angle_Input" to="." method="_on_angle_input_text_submitted"]

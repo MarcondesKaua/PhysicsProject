@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsd0gnqchiqf"]
+[gd_scene load_steps=15 format=3 uid="uid://dsd0gnqchiqf"]
 
 [ext_resource type="Script" uid="uid://cfjaptwoqpp7k" path="res://Scripts/canon.gd" id="1_0jbhj"]
 [ext_resource type="Texture2D" uid="uid://c2axg6ujps068" path="res://assets/Canon/JoppewCanhão/basecanhão.png" id="2_h5dys"]
+[ext_resource type="Texture2D" uid="uid://caew1ddr03sbt" path="res://assets/Canon/JoppewCanhão/anim1.png" id="3_nsfx8"]
 [ext_resource type="Texture2D" uid="uid://cbbasd85lii6w" path="res://assets/Canon/JoppewCanhão/cimacanhão.png" id="3_x2mam"]
+[ext_resource type="Texture2D" uid="uid://b4h25xi6pgk38" path="res://assets/Canon/JoppewCanhão/anim1,1.png" id="4_d7n0y"]
+[ext_resource type="Texture2D" uid="uid://bbl3e6gqkels7" path="res://assets/Canon/JoppewCanhão/anim1,2.png" id="5_d4kt2"]
+[ext_resource type="Texture2D" uid="uid://rs1rjp2ytnci" path="res://assets/Canon/JoppewCanhão/anim2.png" id="5_d7n0y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vj2b"]
 bg_color = Color(1, 0, 0.116667, 1)
@@ -10,14 +14,52 @@ bg_color = Color(1, 0, 0.116667, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhcul"]
 bg_color = Color(0.175, 0.75, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4kt2"]
+atlas = ExtResource("3_nsfx8")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0owi"]
+atlas = ExtResource("4_d7n0y")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lpju"]
+atlas = ExtResource("5_d4kt2")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isnms"]
+atlas = ExtResource("5_d7n0y")
+region = Rect2(0, 0, 720, 720)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ntxn5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_d4kt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0owi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lpju")
+}],
+"loop": false,
+"name": &"charging",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_x2mam")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isnms")
+}],
+"loop": false,
+"name": &"shooting",
 "speed": 5.0
 }]
 
@@ -49,6 +91,9 @@ texture_filter = 1
 position = Vector2(0.610413, -1.22697)
 scale = Vector2(0.006, 0.006)
 sprite_frames = SubResource("SpriteFrames_ntxn5")
+animation = &"charging"
+frame = 2
+frame_progress = 1.0
 offset = Vector2(180, -150)
 
 [node name="ShootingPoint" type="Node2D" parent="CanonMuzzle"]

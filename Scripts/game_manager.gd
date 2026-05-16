@@ -94,7 +94,6 @@ func setup() -> void:
 	var local_wind = self.wind_scene.instantiate()
 	var local_trail_menu = self.trail_menu_scene.instantiate()
 	
-	
 	self.world.add_child(local_canvas_input)
 	self.world.add_child(local_wind)
 	self.world.add_child(local_trail_menu)
@@ -102,7 +101,6 @@ func setup() -> void:
 	local_trail_menu.set_menu_visable(false)
 	local_wind.set_menu_visable(false)
 	
-
 	self.grav_inst = local_canvas_input
 	self.wind_inst = local_wind
 	self.trail_inst = local_trail_menu
@@ -122,9 +120,11 @@ func setup() -> void:
 	#self.world.add_child(localCanvasInput)
 	#self.world.add_child(localWind)
 	#
-	
-	var local_controls_menu = self.menu_controls_scene.instantiate()
-	self.world.add_child(local_controls_menu)
+	if self.actual_level == 1:
+		pass
+	else:
+		var local_controls_menu = self.menu_controls_scene.instantiate()
+		self.world.add_child(local_controls_menu)
 	
 	local_trail_menu.trail_limit_signal.connect(self._on_trail_limit_changed)
 	self._on_trail_limit_changed(2)

@@ -16,7 +16,6 @@ func _ready() -> void:
 	self.angle_Input.visible = false
 	
 	if GameManager.grav_inst:
-		print("Sinal conectado")
 		GameManager.grav_inst.menu_closed.connect(self.external_menu_closed)
 	if GameManager.wind_inst:
 		GameManager.wind_inst.menu_closed.connect(self.external_menu_closed)
@@ -24,6 +23,11 @@ func _ready() -> void:
 		GameManager.trail_inst.menu_closed.connect(self.external_menu_closed)
 	if GameManager.canon_inst:
 		self.shooting_angle_defined.connect(GameManager.canon_inst.set_launch_angle)
+
+func _process(delta: float) -> void:
+	if GameManager.game_paused:
+		return
+
 
 func _on_button_pressed() -> void:
 	GameManager.game_paused = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://brng1v2av12w5"]
+[gd_scene load_steps=34 format=4 uid="uid://brng1v2av12w5"]
 
 [ext_resource type="Script" uid="uid://h5ejun3rqcub" path="res://Scripts/level_1.gd" id="1_o06y3"]
 [ext_resource type="Texture2D" uid="uid://lwb0b0jwxo7s" path="res://assets/BgLevels/DaySky.png" id="2_5v1tr"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://blhd4cng5jw0b" path="res://assets/Dirt-&-Grass-2D-Platform-Tileset_ver.2_by_AxulArt/grass tileset ver.2.png" id="4_7yui6"]
 [ext_resource type="PackedScene" uid="uid://bms00f6l0qr5c" path="res://Scenes/target.tscn" id="6_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://dsd0gnqchiqf" path="res://Scenes/canon.tscn" id="7_o06y3"]
+[ext_resource type="Texture2D" uid="uid://cmtxwwjqxkqda" path="res://assets/Cursors/light/pointer.png" id="9_0fj1v"]
 [ext_resource type="Texture2D" uid="uid://b808aywnrfxoq" path="res://assets/Super Mario MEGA Tileset/Overworld.png" id="10_0fj1v"]
+[ext_resource type="Texture2D" uid="uid://da3rbrgjpydeh" path="res://assets/Cursors/light/click.png" id="10_ikia7"]
+[ext_resource type="FontFile" uid="uid://bgoj1fdqqb0qd" path="res://assets/Fontes/PixeloidSans.ttf" id="11_7yui6"]
 [ext_resource type="Texture2D" uid="uid://mb13gmbws8b5" path="res://assets/Sunny Land Collection Files/Assets/Environments/SunnyLand/Layers/tileset.png" id="11_ikia7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ikia7"]
@@ -3782,8 +3785,199 @@ texture = ExtResource("3_fo5ed")
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_k7acu")
 
-[node name="World_1" type="Node2D"]
+[sub_resource type="Animation" id="Animation_k7acu"]
+resource_name = "Fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorTransition:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.627451)]
+}
+
+[sub_resource type="Animation" id="Animation_5v1tr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorTransition:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5v1tr"]
+_data = {
+&"Fade_in": SubResource("Animation_k7acu"),
+&"RESET": SubResource("Animation_5v1tr")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yui6"]
+atlas = ExtResource("9_0fj1v")
+region = Rect2(0, 0, 160, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5t2i"]
+atlas = ExtResource("10_ikia7")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fj1v"]
+atlas = ExtResource("9_0fj1v")
+region = Rect2(0, 0, 160, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e0ngr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yui6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5t2i")
+}],
+"loop": true,
+"name": &"Click",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fj1v")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ikia7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1255.49, 500.23)]
+}
+
+[sub_resource type="Animation" id="Animation_0fj1v"]
+resource_name = "DefaultCanhao"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1255.49, 500.23), Vector2(-1243.37, 496.392)]
+}
+
+[sub_resource type="Animation" id="Animation_e0ngr"]
+resource_name = "DefaultTarget"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-371.457, 453.149), Vector2(-356.816, 442.501)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yui6"]
+_data = {
+&"DefaultCanhao": SubResource("Animation_0fj1v"),
+&"DefaultTarget": SubResource("Animation_e0ngr"),
+&"RESET": SubResource("Animation_ikia7")
+}
+
+[sub_resource type="Theme" id="Theme_c5t2i"]
+default_font = ExtResource("11_7yui6")
+default_font_size = 30
+
+[sub_resource type="Animation" id="Animation_c5t2i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1263.9, 568.828)]
+}
+
+[sub_resource type="Animation" id="Animation_7yui6"]
+resource_name = "DefaultCanhao"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1263.9, 568.828), Vector2(-1263.9, 584.558)]
+}
+
+[sub_resource type="Animation" id="Animation_kn0ld"]
+resource_name = "DefaultTarget"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-344.104, 531.802), Vector2(-344.104, 551.289)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e0ngr"]
+_data = {
+&"DefaultCanhao": SubResource("Animation_7yui6"),
+&"DefaultTarget": SubResource("Animation_kn0ld"),
+&"RESET": SubResource("Animation_c5t2i")
+}
+
+[node name="World_1" type="Node2D" node_paths=PackedStringArray("cursor_anm", "cursor_anm_player", "tutorial_anm", "label_anm")]
 script = ExtResource("1_o06y3")
+cursor_anm = NodePath("Tutorial/Control/Cursor")
+cursor_anm_player = NodePath("Tutorial/Control/Cursor_animation")
+tutorial_anm = NodePath("Tutorial/Tutorial_transition")
+label_anm = NodePath("Tutorial/Control/Label_animation")
 
 [node name="Background" type="TextureRect" parent="."]
 texture_repeat = 2
@@ -3820,3 +4014,59 @@ position = Vector2(1.10455, 9.95257)
 
 [node name="Target" parent="." instance=ExtResource("6_5ukr8")]
 position = Vector2(20.6214, 5.23776)
+
+[node name="Tutorial" type="CanvasLayer" parent="."]
+
+[node name="Tutorial_transition" type="AnimationPlayer" parent="Tutorial"]
+libraries = {
+&"": SubResource("AnimationLibrary_5v1tr")
+}
+
+[node name="ColorTransition" type="ColorRect" parent="Tutorial"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19, 0.19, 0.19, 1)
+
+[node name="Control" type="Control" parent="Tutorial"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="Cursor" type="AnimatedSprite2D" parent="Tutorial/Control"]
+texture_filter = 1
+position = Vector2(-1255.49, 500.23)
+scale = Vector2(0.475, 0.475)
+sprite_frames = SubResource("SpriteFrames_e0ngr")
+animation = &"Default"
+flip_v = true
+
+[node name="Cursor_animation" type="AnimationPlayer" parent="Tutorial/Control"]
+root_node = NodePath("../Cursor")
+libraries = {
+&"": SubResource("AnimationLibrary_7yui6")
+}
+
+[node name="Label" type="Label" parent="Tutorial/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -1263.9
+offset_top = 568.828
+offset_right = -707.899
+offset_bottom = 645.828
+theme = SubResource("Theme_c5t2i")
+theme_override_colors/font_color = Color(0.824617, 0.273734, 1.92523e-07, 1)
+theme_override_colors/font_shadow_color = Color(0.226616, 0.0713857, 0, 1)
+
+[node name="Label_animation" type="AnimationPlayer" parent="Tutorial/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_e0ngr")
+}

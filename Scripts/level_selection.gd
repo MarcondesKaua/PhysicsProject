@@ -26,6 +26,10 @@ func _on_level_3_button_pressed() -> void:
 	GameManager.loading_levels(self.level)
 	GameManager.actual_level = 3
 	
+func _on_level_4_button_pressed() -> void:
+	self.level = load("res://Scenes/world_4.tscn")
+	GameManager.loading_levels(self.level)
+	GameManager.actual_level = 4
 func update_level_buttons():
 	var buttons = self.grid_conteiner.get_children()
 	for i in range(buttons.size()):

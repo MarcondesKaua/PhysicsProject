@@ -24,9 +24,9 @@ func _ready() -> void:
 	if GameManager.canon_inst:
 		self.shooting_angle_defined.connect(GameManager.canon_inst.set_launch_angle)
 
-func _process(delta: float) -> void:
-	if GameManager.game_paused:
-		return
+#func _process(delta: float) -> void:
+	#if GameManager.game_paused:
+		#return
 
 
 func _on_button_pressed() -> void:

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dsd0gnqchiqf" path="res://Scenes/canon.tscn" id="3_74n6h"]
 [ext_resource type="PackedScene" uid="uid://bms00f6l0qr5c" path="res://Scenes/target.tscn" id="4_npyj5"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6c7x5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ppwu"]
 texture = ExtResource("2_4ppwu")
 0:0/0 = 0
 1:0/0 = 0
@@ -204,7 +204,7 @@ texture = ExtResource("2_4ppwu")
 
 [sub_resource type="TileSet" id="TileSet_wx14w"]
 physics_layer_0/collision_layer = 2
-sources/0 = SubResource("TileSetAtlasSource_6c7x5")
+sources/0 = SubResource("TileSetAtlasSource_4ppwu")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcngy"]
 texture = ExtResource("2_4ppwu")

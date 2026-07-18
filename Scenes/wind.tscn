@@ -468,7 +468,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_njeuf")
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/RightButton" to="." method="_on_right_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxForce/HBoxDirections/LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ControlDirections/WindDirectionMenu" to="." method="_on_wind_direction_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/ControlDirections/WindMenu/ClickChecker" to="." method="_on_click_checker_pressed"]
 [connection signal="pressed" from="CanvasLayer/ControlDirections/WindMenu/ClickChecker" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlDirections/WindMenu/ClickChecker" to="." method="_on_click_checker_pressed"]
 [connection signal="toggled" from="CanvasLayer/ControlCheckWind/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="CanvasLayer/Back_to_menu_button" to="." method="_on_back_to_menu_button_pressed"]

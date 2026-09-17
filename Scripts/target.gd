@@ -5,7 +5,7 @@ class_name Target
 @export var distance_direction: bool = true
 
 var current_location: Vector2
-var distance: float = 5.0
+@export var distance: float = 5.0
 var current_speed: float = 1.0
 
 var min_x: float = 5.0

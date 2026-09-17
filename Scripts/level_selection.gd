@@ -30,6 +30,8 @@ func _on_level_4_button_pressed() -> void:
 	self.level = load("res://Scenes/world_4.tscn")
 	GameManager.loading_levels(self.level)
 	GameManager.actual_level = 4
+	
+	
 func update_level_buttons():
 	var buttons = self.grid_conteiner.get_children()
 	for i in range(buttons.size()):
@@ -48,3 +50,21 @@ func update_level_buttons():
 			2: # Concluído
 				bt.mouse_filter = Control.MOUSE_FILTER_STOP
 				bt.modulate = Color(0.5, 1, 0.5) # Tom esverdeado
+
+
+func _on_level_5_button_pressed() -> void:
+	self.level = load("res://Scenes/world_5.tscn")
+	GameManager.loading_levels(self.level)
+	GameManager.actual_level = 5
+
+
+func _on_level_6_button_pressed() -> void:
+	self.level = load("res://Scenes/world_6.tscn")
+	GameManager.loading_levels(self.level)
+	GameManager.actual_level = 6
+
+
+func _on_level_7_button_pressed() -> void:
+	self.level = load("res://world_7.tscn")
+	GameManager.loading_levels(self.level)
+	GameManager.actual_level = 7
